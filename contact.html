@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ==============================================
+       SMART LIFE SOLUTIONS - CONTACT PAGE
+       Version: 1.0 | October 2025
+  =============================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Smart Life Solutions for partnerships, volunteering, or membership enquiries." />
+  <title>Contact | Smart Life Solutions</title>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/images/favicon.png" type="image/png" />
+</head>
+<body>
+
+  <!-- ======================
+       NAVIGATION BAR
+  ======================= -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <!-- <img src="assets/images/logo-light.svg" alt="Smart Life Solutions Logo" /> -->
+        <h2><a href="index.html">Life Solutions</a></h2>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="blog.html">Blog</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html" class="active">Contact</a>
+        <button id="theme-toggle" title="Toggle light/dark mode">☀️</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======================
+       PAGE HEADER
+  ======================= -->
+  <header class="page-header">
+    <h1>Contact Smart Life Solutions</h1>
+    <p>We’d love to hear from you. Reach out for membership, volunteering, or partnership opportunities.</p>
+  </header>
+
+  <!-- ======================
+       CONTACT SECTION
+  ======================= -->
+  <section class="container contact-section">
+    
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <h2>Send Us a Message</h2>
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Email Address" required />
+        <input type="tel" name="phone" placeholder="Phone (optional)" />
+        <input type="text" name="institution" placeholder="Institution / Year of Study" />
+        
+        <select name="enquiry" required>
+          <option value="">Select Type of Enquiry</option>
+          <option value="Membership">Membership</option>
+          <option value="Counselling">Counselling</option>
+          <option value="Events">Events</option>
+          <option value="Volunteer">Volunteer</option>
+          <option value="Partnership">Partnership</option>
+          <option value="Media">Media</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <textarea name="message" rows="5" placeholder="Your message..." required></textarea>
+
+        <label class="checkbox">
+          <input type="checkbox" required />
+          <span>I consent to SLS storing my contact info for program communication.</span>
+        </label>
+
+        <button type="submit" class="btn-primary">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Direct Contact Info -->
+    <div class="contact-info">
+      <h2>Direct Contact</h2>
+      <p><strong>General Enquiries:</strong> smartlifesolutionsclub100@gmail.com</p>
+      <p><strong>Membership & Programs:</strong> membership@smartlifesolutions.org</p>
+      <p><strong>Volunteer & Partnerships:</strong> volunteer@smartlifesolutions.org</p>
+      <p><strong>Media & Events:</strong> media@smartlifesolutions.org</p>
+
+      <h3>Phone & Hours</h3>
+      <p>📞 +233 55 884 9899</p>
+      <p>🕒 Mon–Sat | 9:00 AM – 6:00 PM</p>
+
+      <h3>Follow Us</h3>
+      <p>
+        <a href="https://linktr.ee/smartlifesolutions" target="_blank">Linktree</a> |
+        <a href="https://www.linkedin.com/company/smart-life-solutions-ghana/" target="_blank">LinkedIn</a> |
+        <a href="#" target="_blank">Instagram</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================
+       FAQ SECTION
+  ======================= -->
+  <section class="container faq-section">
+    <h2>Quick FAQs</h2>
+
+    <div class="faq-item">
+      <h3>How do I join the Success Crew?</h3>
+      <p>Complete the Join form on the Membership page or email <a href="mailto:membership@smartlifesolutions.org">membership@smartlifesolutions.org</a>.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I attend online?</h3>
+      <p>Yes — most workshops and cohorts offer an online option. Check the event page for links.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is counselling confidential?</h3>
+      <p>Absolutely. Our counselling sessions are private and follow a strict referral process for professional care when needed.</p>
+    </div>
+  </section>
+
+  <!-- ======================
+       FOOTER
+  ======================= -->
+  <footer>
+    <p>© 2025 Smart Life Solutions | All Rights Reserved</p>
+  </footer>
+
+  <!-- ======================
+       SCRIPTS
+  ======================= -->
+  <script src="assets/js/script.js"></script>
+
+  <script>
+    /* =====================================
+       CONTACT FORM ALERT (SIMULATION)
+       Triggered when form is submitted
+    ====================================== */
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thank you for reaching out! Your message has been received by Smart Life Solutions.');
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>

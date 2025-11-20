@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ==============================================
+       SMART LIFE SOLUTIONS - BLOG PAGE
+       Version: 1.0 | October 2025
+  =============================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Smart Life Solutions blog sharing insights, tips, and experiences from students and mentors." />
+  <title>Blog | Smart Life Solutions</title>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/images/favicon.png" type="image/png" />
+</head>
+<body>
+
+  <!-- ======================
+       NAVIGATION BAR
+  ======================= -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <!-- <img src="assets/images/logo-light.svg" alt="Smart Life Solutions Logo" /> -->
+        <h2><a href="index.html">Smart Life Solutions</a></h2>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <button id="theme-toggle" title="Toggle light/dark mode">☀️</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======================
+       PAGE HEADER
+  ======================= -->
+  <header class="page-header">
+    <h1>Smart Life Solutions Blog</h1>
+    <p>Stories, reflections, and tips from students, mentors, and facilitators.</p>
+  </header>
+
+  <!-- ======================
+       SEARCH BAR
+  ======================= -->
+  <section class="container" style="text-align:center; margin-bottom:2rem;">
+    <input 
+      type="text" 
+      id="search-bar" 
+      placeholder="Search articles..." 
+      style="width:80%; max-width:500px; padding:0.8rem; border-radius:8px; border:1px solid #ccc;" 
+    />
+  </section>
+
+  <!-- ======================
+       BLOG GRID
+  ======================= -->
+  <section class="container">
+    <div class="blog-grid" id="blog-grid">
+      
+      <!-- Blog 1 -->
+      <div class="blog-card" data-title="Time Management for Students" data-tags="time, productivity, study">
+        <img src="assets/images/blog-1.jpg" alt="Time Management" />
+        <h3>Time Management for Students</h3>
+        <p>
+          Learn how to manage your academic, social, and personal life effectively with simple, actionable habits.
+        </p>
+        <a href="#" class="btn-secondary">Read More</a>
+      </div>
+
+      <!-- Blog 2 -->
+      <div class="blog-card" data-title="Building Financial Discipline" data-tags="finance, budgeting, money">
+        <img src="assets/images/blog-2.jpg" alt="Financial Literacy" />
+        <h3>Building Financial Discipline</h3>
+        <p>
+          Explore the core principles of saving, budgeting, and small-scale investing for young adults.
+        </p>
+        <a href="#" class="btn-secondary">Read More</a>
+      </div>
+
+      <!-- Blog 3 -->
+      <div class="blog-card" data-title="The Power of Mentorship" data-tags="mentorship, leadership, growth">
+        <img src="assets/images/blog-3.jpg" alt="Mentorship" />
+        <h3>The Power of Mentorship</h3>
+        <p>
+          Discover how having a mentor shapes your academic and professional journey.
+        </p>
+        <a href="#" class="btn-secondary">Read More</a>
+      </div>
+
+      <!-- Blog 4 -->
+      <div class="blog-card" data-title="Digital Literacy for a Modern Student" data-tags="technology, digital, safety">
+        <img src="assets/images/blog-4.jpg" alt="Digital Literacy" />
+        <h3>Digital Literacy for a Modern Student</h3>
+        <p>
+          Learn about essential tools for safe and productive digital engagement in education.
+        </p>
+        <a href="#" class="btn-secondary">Read More</a>
+      </div>
+
+      <!-- Blog 5 -->
+      <div class="blog-card" data-title="Balancing Health and Academics" data-tags="health, wellbeing, student life">
+        <img src="assets/images/blog-5.jpg" alt="Student Health" />
+        <h3>Balancing Health and Academics</h3>
+        <p>
+          A guide to maintaining good sleep, diet, and focus while meeting academic demands.
+        </p>
+        <a href="#" class="btn-secondary">Read More</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================
+       FOOTER
+  ======================= -->
+  <footer>
+    <p>© 2025 Smart Life Solutions | All Rights Reserved</p>
+  </footer>
+
+  <!-- ======================
+       SCRIPTS
+  ======================= -->
+  <script src="assets/js/script.js"></script>
+
+  <script>
+    /* =====================================
+       LIVE SEARCH FUNCTIONALITY
+       Filters blog cards by title or tags
+    ====================================== */
+    const searchBar = document.getElementById("search-bar");
+    const blogGrid = document.getElementById("blog-grid");
+    const blogCards = blogGrid.querySelectorAll(".blog-card");
+
+    searchBar.addEventListener("input", () => {
+      const term = searchBar.value.toLowerCase();
+      blogCards.forEach(card => {
+        const title = card.dataset.title.toLowerCase();
+        const tags = card.dataset.tags.toLowerCase();
+        if (title.includes(term) || tags.includes(term)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
