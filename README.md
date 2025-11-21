@@ -21,7 +21,7 @@ The site is **static**, responsive, and works **completely offline** — no data
 ---
 
 ## 📁 Folder Structure
-
+```
 sls-site/
 ├── index.html
 ├── about.html
@@ -37,3 +37,4 @@ sls-site/
 ├── js/
 │   └── script.js
 └── README.md
+```
