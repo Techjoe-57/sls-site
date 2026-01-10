@@ -1,0 +1,145 @@
+/* ========== RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ========== COLORS ========== */
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --nav: #0f2a44;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --nav: #020617;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+  background: var(--nav);
+  color: #fff;
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  font-size: 14px;
+  color: #fff;
+  opacity: 0.9;
+}
+
+#themeToggle {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* ========== LAYOUT ========== */
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  padding: 24px 40px;
+}
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.sidebar h3 {
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: var(--muted);
+}
+
+.sidebar li {
+  list-style: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sidebar li:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* ========== HERO CARDS ========== */
+.hero-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.hero-card {
+  height: 140px;
+  border-radius: 10px;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-1 { background-image: url("../images/hero1.jpg"); }
+.hero-2 { background-image: url("../images/hero2.jpg"); }
+.hero-3 { background-image: url("../images/hero3.jpg"); }
+
+/* ========== GRID ========== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.box {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.box h4 {
+  margin-bottom: 8px;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-cards,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

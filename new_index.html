@@ -1,29 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- =====================================
-        SMART LIFE SOLUTIONS - HOME PAGE
-        Author: Smart Life Solutions (SLS) Dev Team
-        Version: 1.1 | December 2025
-    ==========================================-->
-    <meta charset="UTF-8"/>
-    <title>Smart Life Solutions | Home</title>
+  <meta charset="UTF-8" />
+  <title>SmartLife Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--LINK TO CSS-->
-    <link rel="stylesheet" href="assets/css/new_style.css"/>
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/new_style.css" />
 </head>
-<body>
-    <!--====================
-    NAVIGATION BAR
-    ========================-->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <h2>SLS.com</h2>
-            </div>
-            
 
-        </div>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+    <h1>smartlife.com</h1>
+
+    <nav class="nav-links">
+      <a href="#">Dashboard</a>
+      <a href="#">Mentorship</a>
+      <a href="#">Study Hub</a>
+      <a href="#">Jobs & Gigs</a>
     </nav>
+
+    <button id="themeToggle">🌙</button>
+  </header>
+
+  <!-- ================= MAIN LAYOUT ================= -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h3>SmartFeed</h3>
+      <ul>
+        <li><i class="fas fa-book"></i> Resources</li>
+        <li><i class="fas fa-graduation-cap"></i> Study Zones</li>
+        <li><i class="fas fa-briefcase"></i> Career Tools</li>
+        <li><i class="fas fa-calendar"></i> Events</li>
+        <li><i class="fas fa-gear"></i> Settings</li>
+      </ul>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- HERO CARDS -->
+      <section class="hero-cards">
+        <div class="hero-card hero-1">
+          <h2>Unlock Your Potential</h2>
+          <p>Connect & Grow</p>
+        </div>
+
+        <div class="hero-card hero-2">
+          <h2>Build Skills</h2>
+          <p>Learn from mentors</p>
+        </div>
+
+        <div class="hero-card hero-3">
+          <h2>Find Opportunities</h2>
+          <p>Jobs & internships</p>
+        </div>
+      </section>
+
+      <!-- DASHBOARD GRID -->
+      <section class="grid">
+        <div class="box">
+          <i class="fas fa-book-open icon"></i>
+          <h4>Study Hub</h4>
+          <p>Learning resources & courses.</p>
+        </div>
+
+        <div class="box">
+          <h4>Mentorship</h4>
+          <p>Connect with professionals.</p>
+        </div>
+
+        <div class="box">
+          <h4>Jobs & Internships</h4>
+          <p>Career opportunities.</p>
+        </div>
+
+        <div class="box">
+          <h4>Upcoming Events</h4>
+          <p>Bootcamps & workshops.</p>
+        </div>
+
+        <div class="box">
+          <h4>Clubs & Groups</h4>
+          <p>Join learning communities.</p>
+        </div>
+
+        <div class="box">
+          <h4>Resources</h4>
+          <p>Helpful tools & guides.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer>
+    © 2025 SmartLife. All rights reserved.
+  </footer>
+
+  <!-- JS -->
+  <script src="assets/js/new_script.js"></script>
 </body>
 </html>
