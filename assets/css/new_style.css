@@ -1,4 +1,7 @@
 /* ========== RESET ========== */
+html, body {
+  height: 100%;
+}
 * {
   margin: 0;
   padding: 0;
@@ -26,6 +29,9 @@ body.dark {
 body {
   background: var(--bg);
   color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ========== NAVBAR ========== */
@@ -54,6 +60,7 @@ body {
 
 /* ========== LAYOUT ========== */
 .layout {
+  flex: 1;
   display: grid;
   grid-template-columns: 260px 1fr;
   gap: 24px;
