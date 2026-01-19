@@ -25,20 +25,30 @@ body.dark {
   --muted: #94a3b8;
   --nav: #020617;
 }
+/* Old Body */
+/* body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+} */
 
+/* New Body */
 body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
-
 /* ========== NAVBAR ========== */
 .navbar {
+  height: var(--nav-height);
   background: var(--nav);
   color: #fff;
-  padding: 14px 40px;
+  padding: 0px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -63,8 +73,9 @@ body {
   flex: 1;
   display: grid;
   grid-template-columns: 260px 1fr;
-  gap: 24px;
-  padding: 24px 40px;
+  gap: var(--section-gap);
+  padding: var(--section-gap) 40px;
+  overflow: hidden;
 }
 
 /* ========== SIDEBAR ========== */
@@ -72,6 +83,7 @@ body {
   background: var(--card);
   padding: 20px;
   border-radius: 8px;
+  height: 100%;
 }
 
 .sidebar h3 {
@@ -95,7 +107,7 @@ body {
 .hero-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: var(--section-gap);
 }
 
 .hero-card {
@@ -129,6 +141,19 @@ body {
 
 .box h4 {
   margin-bottom: 8px;
+}
+
+:root {
+  --nav-height: 64px;
+  --section-gap: 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
 /* ========== FOOTER ========== */
