@@ -202,3 +202,43 @@ footer {
   font-weight: 600;
   border-bottom: 2px solid #fff;
 }
+
+.calendar-list {
+  list-style: none;
+  margin-top: 12px;
+}
+
+.calendar-list li {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.calendar-list .date {
+  font-weight: 600;
+  color: #2563eb;
+  min-width: 60px;
+}
+
+.calendar-list .event {
+  color: var(--text);
+}
+
+.countdown-title {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.countdown-time {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 8px 0 12px;
+  color: #ef4444;
+}
+
+.btn-link {
+  font-size: 14px;
+  color: #2563eb;
+  font-weight: 500;
+}
