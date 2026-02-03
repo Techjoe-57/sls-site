@@ -7,7 +7,7 @@ toggle.addEventListener("click", () => {
     document.body.classList.contains("dark") ? "☀️" : "🌙";
 });
 
-const eventDate = new Date("2026-02-15T18:00:00").getTime();
+const eventDate = new Date("2026-02-20T18:00:00").getTime();
 const countdownEl = document.getElementById("countdownTimer");
 
 if (countdownEl) {
@@ -26,4 +26,46 @@ if (countdownEl) {
 
     countdownEl.textContent = `${days}d ${hours}h ${minutes}m`;
   }, 1000);
+}
+
+let currentSlide = 0;
+let testimonialsData = [];
+
+const track = document.getElementById("testimonialTrack");
+
+fetch("assets/data/testimonials.json")
+  .then(res => res.json())
+  .then(data => {
+    testimonialsData = data;
+    renderTestimonials();
+    autoSlide();
+  });
+
+function renderTestimonials() {
+  track.innerHTML = testimonialsData.map(t => `
+    <div class="testimonial-card">
+      <img src="${t.image}" alt="${t.name}">
+      <div class="testimonial-content">
+        <p>“${t.message}”</p>
+        <strong>${t.name}</strong><br>
+        <small>${t.institution}</small><br>
+        <small>${t.level}</small>
+      </div>
+    </div>
+  `).join("");
+}
+
+function moveSlide(direction) {
+  currentSlide =
+    (currentSlide + direction + testimonialsData.length) %
+    testimonialsData.length;
+
+  track.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+document.querySelector(".prev").onclick = () => moveSlide(-1);
+document.querySelector(".next").onclick = () => moveSlide(1);
+
+function autoSlide() {
+  setInterval(() => moveSlide(1), 6000);
 }
