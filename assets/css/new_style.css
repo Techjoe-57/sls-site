@@ -294,9 +294,9 @@ footer {
 }
 
 .testimonial-card img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  border-radius: 40%;
   object-fit: cover;
 }
 
