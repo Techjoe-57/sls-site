@@ -61,6 +61,7 @@ body {
   letter-spacing: 0.2px;
   color: #fff;
   opacity: 0.9;
+  text-decoration: none;
 }
 
 .nav-links a:hover {
