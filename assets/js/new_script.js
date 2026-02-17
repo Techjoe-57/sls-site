@@ -28,16 +28,61 @@ if (countdownEl) {
   }, 1000);
 }
 
+// let currentSlide = 0;
+// let testimonialsData = [];
+
+// const track = document.getElementById("testimonialTrack");
+
+// fetch("assets/data/testimonials.json")
+//   .then(res => res.json())
+//   .then(data => {
+//     testimonialsData = data;
+//     renderTestimonials();
+//     autoSlide();
+//   });
+
+// function renderTestimonials() {
+//   track.innerHTML = testimonialsData.map(t => `
+//     <div class="testimonial-card">
+//       <img src="${t.image}" alt="${t.name}">
+//       <div class="testimonial-content">
+//         <p>“${t.message}”</p>
+//         <strong>${t.name}</strong><br>
+//         <small>${t.institution}</small><br>
+//         <small>${t.level}</small>
+//       </div>
+//     </div>
+//   `).join("");
+// }
+
+// function moveSlide(direction) {
+//   currentSlide =
+//     (currentSlide + direction + testimonialsData.length) %
+//     testimonialsData.length;
+
+//   track.style.transform = `translateX(-${currentSlide * 100}%)`;
+// }
+
+// document.querySelector(".prev").onclick = () => moveSlide(-1);
+// document.querySelector(".next").onclick = () => moveSlide(1);
+
+// function autoSlide() {
+//   setInterval(() => moveSlide(1), 6000);
+// }
+
 let currentSlide = 0;
 let testimonialsData = [];
 
 const track = document.getElementById("testimonialTrack");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
 
 fetch("assets/data/testimonials.json")
   .then(res => res.json())
   .then(data => {
     testimonialsData = data;
     renderTestimonials();
+    attachControls();
     autoSlide();
   });
 
@@ -53,6 +98,13 @@ function renderTestimonials() {
       </div>
     </div>
   `).join("");
+
+  updateSlide();
+}
+
+function attachControls() {
+  prevBtn.addEventListener("click", () => moveSlide(-1));
+  nextBtn.addEventListener("click", () => moveSlide(1));
 }
 
 function moveSlide(direction) {
@@ -60,12 +112,35 @@ function moveSlide(direction) {
     (currentSlide + direction + testimonialsData.length) %
     testimonialsData.length;
 
+  updateSlide();
+}
+
+// function attachControls() {
+//   prevBtn.addEventListener("click", () => moveSlide(-1));
+//   nextBtn.addEventListener("click", () => moveSlide(1));
+// }
+
+function updateSlide() {
   track.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 
-document.querySelector(".prev").onclick = () => moveSlide(-1);
-document.querySelector(".next").onclick = () => moveSlide(1);
-
 function autoSlide() {
   setInterval(() => moveSlide(1), 6000);
+}
+
+// Reset the timer to prevent auto-slide disrupting manual clicks
+let autoTimer;
+
+function autoSlide() {
+  autoTimer = setInterval(() => moveSlide(1), 6000);
+}
+
+function moveSlide(direction) {
+  clearInterval(autoTimer);
+  currentSlide =
+    (currentSlide + direction + testimonialsData.length) %
+    testimonialsData.length;
+
+  updateSlide();
+  autoSlide();
 }
