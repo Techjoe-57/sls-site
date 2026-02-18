@@ -144,3 +144,23 @@ function moveSlide(direction) {
   updateSlide();
   autoSlide();
 }
+// Mail Script
+emailjs.init("UkSAZDqrmMplp5IcO");
+
+const form = document.getElementById("contactForm");
+const status = document.querySelector(".form-status");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  emailjs.sendForm("service_iippmsj", "template_sdf8mu3", this)
+    .then(() => {
+      status.textContent = "Message sent successfully!";
+      status.style.color = "green";
+      form.reset();
+    })
+    .catch(() => {
+      status.textContent = "Something went wrong. Try again.";
+      status.style.color = "red";
+    });
+});

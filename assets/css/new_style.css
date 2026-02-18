@@ -80,9 +80,12 @@ body {
 .layout {
   flex: 1;
   display: grid;
-  grid-template-columns: 260px 1fr;
+  /* grid-template-columns: 260px 1fr;
   gap: var(--section-gap);
-  padding: var(--section-gap) 40px;
+  padding: var(--section-gap) 40px; */
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  padding: 24px 40px;
   overflow: hidden;
 }
 
@@ -90,8 +93,8 @@ body {
 .sidebar {
   background: var(--card);
   padding: 20px;
-  border-radius: 8px;
-  height: 100%;
+  border-radius: 14px;
+  /* height: 100%; */
 }
 
 .sidebar h3 {
@@ -416,3 +419,38 @@ footer {
 
 .carousel-btn.prev { left: 10px; }
 .carousel-btn.next { right: 10px; }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.contact-form button {
+  background: #0f2a44;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.contact-form button:hover {
+  background: #163c63;
+}
