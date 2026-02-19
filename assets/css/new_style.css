@@ -25,14 +25,6 @@ body.dark {
   --muted: #94a3b8;
   --nav: #020617;
 }
-/* Old Body */
-/* body {
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-} */
 
 /* New Body */
 body {
@@ -133,9 +125,9 @@ body {
   background-position: center;
 }
 
-.hero-1 { background-image: url("../images/hero1.jpg"); }
-.hero-2 { background-image: url("../images/hero2.jpg"); }
-.hero-3 { background-image: url("../images/hero3.jpg"); }
+.hero-1 { background-image: url("../images/hero-images/hero1.jpg"); }
+.hero-2 { background-image: url("../images/hero-images/hero2.jpg"); }
+.hero-3 { background-image: url("../images/hero-images/hero3.jpg"); }
 
 /* ========== GRID ========== */
 .grid {
