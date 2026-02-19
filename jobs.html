@@ -30,18 +30,29 @@
 
   <div class="layout">
 
-    <!-- SIDEBAR -->
-    <!-- (same sidebar here) -->
-     <aside class="sidebar">
-  <h3>SmartFeed</h3>
-  <ul>
-    <li><i class="fas fa-book"></i> Resources</li>
-    <li><i class="fas fa-graduation-cap"></i> Study Zones</li>
-    <li><i class="fas fa-briefcase"></i> Career Tools</li>
-    <li><i class="fas fa-calendar"></i> Events</li>
-    <li><i class="fas fa-gear"></i> Settings</li>
-  </ul>
-</aside>
+<!-- SIDEBAR (SAME AS OTHER PAGES) -->
+    <aside class="sidebar">
+      <h3>Contact SmartLife</h3>
+
+      <form class="contact-form" id="contactForm">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="tel" name="tel" placeholder="Your Phone">
+        <input type="text" name="institution" placeholder="Your Institution">
+        <label for="level">Year of Study</label>
+        <input list="years" name="years" id="year" placeholder="--Select an option--" />
+        <datalist id="years">
+          <option value="1st Year">
+          <option value="2nd Year">
+          <option value="3rd Year">
+          <option value="4th Year">
+        </datalist>
+
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p class="form-status"></p>
+      </form>
+    </aside>
 
 
     <!-- PAGE CONTENT -->
