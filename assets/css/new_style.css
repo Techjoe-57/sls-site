@@ -241,13 +241,17 @@ footer {
 
 /* TEAM */
 .team-img {
-  width: 100%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: top right;
   border-radius: 10px;
   margin-bottom: 10px;
 }
 
 .team-card {
   text-align: center;
+
 }
 
 /* SOCIALS */
