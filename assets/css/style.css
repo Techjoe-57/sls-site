@@ -46,6 +46,11 @@ body {
   justify-content: space-between;
 }
 
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .nav-links a {
   margin-left: 20px;
   font-size: 15.5px;
