@@ -77,9 +77,6 @@ body {
 .layout {
   flex: 1;
   display: grid;
-  /* grid-template-columns: 260px 1fr;
-  gap: var(--section-gap);
-  padding: var(--section-gap) 40px; */
   grid-template-columns: 260px 1fr;
   gap: 24px;
   padding: 24px 40px;
@@ -91,7 +88,6 @@ body {
   background: var(--card);
   padding: 20px;
   border-radius: 14px;
-  /* height: 100%; */
 }
 
 .sidebar h3 {
@@ -269,64 +265,6 @@ footer {
   font-size: 18px;
   color: var(--muted);
 }
-
-/* =========================
-   TESTIMONIALS
-========================= */
-
-/* .testimonials {
-  background: var(--card);
-  padding: 28px;
-  border-radius: 14px;
-}
-
-.testimonial-carousel {
-  position: relative;
-  overflow: hidden;
-  margin-top: 20px;
-}
-
-.testimonial-track {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.testimonial-card {
-  min-width: 100%;
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-
-.testimonial-card img {
-  width: 64px;
-  height: 64px;
-  border-radius: 40%;
-  object-fit: cover;
-}
-
-.testimonial-content p {
-  font-size: 16px;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #0f2a44;
-  color: white;
-  border: none;
-  font-size: 22px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.carousel-btn.prev { left: 30px; }
-.carousel-btn.next { right: 30px; } */
 
 /* =========================
    TESTIMONIALS (IMPROVED)
