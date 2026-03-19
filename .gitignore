@@ -1,0 +1,5 @@
+# Files excluded from being pushed to GitHub
+# All Zone.Indetifier files
+*.Identifier
+# All System files
+*.db

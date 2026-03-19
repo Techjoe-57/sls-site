@@ -5,7 +5,7 @@
   <title>Jobs & Gigs | SmartLife</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="assets/css/new_style.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -14,11 +14,11 @@
   <!-- NAVBAR -->
   <!-- (same navbar here) -->
    <header class="navbar">
-  <h1>smartlife.com</h1>
+    <h1><a href="index.html">smartlife.com</a></h1>
 
   <nav class="nav-links">
-    <a href="new_index.html">Dashboard</a>
-    <a href="new_about.html">About</a>
+    <a href="index.html">Dashboard</a>
+    <a href="about.html">About</a>
     <a href="mentorship.html">Mentorship</a>
     <a href="study-hub.html">Study Hub</a>
     <a href="jobs.html" class="active">Jobs & Gigs</a>
@@ -30,18 +30,29 @@
 
   <div class="layout">
 
-    <!-- SIDEBAR -->
-    <!-- (same sidebar here) -->
-     <aside class="sidebar">
-  <h3>SmartFeed</h3>
-  <ul>
-    <li><i class="fas fa-book"></i> Resources</li>
-    <li><i class="fas fa-graduation-cap"></i> Study Zones</li>
-    <li><i class="fas fa-briefcase"></i> Career Tools</li>
-    <li><i class="fas fa-calendar"></i> Events</li>
-    <li><i class="fas fa-gear"></i> Settings</li>
-  </ul>
-</aside>
+<!-- SIDEBAR (SAME AS OTHER PAGES) -->
+    <aside class="sidebar">
+      <h3>Contact SmartLife</h3>
+
+      <form class="contact-form" id="contactForm">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="tel" name="tel" placeholder="Your Phone">
+        <input type="text" name="institution" placeholder="Your Institution">
+        <label for="level">Year of Study</label>
+        <input list="years" name="years" id="year" placeholder="--Select an option--" />
+        <datalist id="years">
+          <option value="1st Year">
+          <option value="2nd Year">
+          <option value="3rd Year">
+          <option value="4th Year">
+        </datalist>
+
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p class="form-status"></p>
+      </form>
+    </aside>
 
 
     <!-- PAGE CONTENT -->
@@ -80,13 +91,13 @@
     © 2025 SmartLife. All rights reserved.
     
     <div class="socials">
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/share/17zTtps8qu/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/slsghana?igsh=a2YwZGRvdDFydnp3" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/smart-life-solutions-ghana/" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="#"><i class="fab fa-x"></i></a>
     </div>
   </footer>
 
-  <script src="assets/js/new_script.js"></script>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>

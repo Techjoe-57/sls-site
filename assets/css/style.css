@@ -1,495 +1,401 @@
-/* =====================================================
-   SMART LIFE SOLUTIONS WEBSITE
-   STYLE SHEET - v1.0 (October 2025)
-   Author: Smart Life Solutions (SLS)
-   ===================================================== */
-
-/* ---------------------------
-   1. GLOBAL STYLES & RESETS
------------------------------- */
-
+/* ========== RESET ========== */
+html, body {
+  height: 100%;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
+/* ========== COLORS ========== */
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --nav: #0f2a44;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --nav: #020617;
+}
+
+/* New Body */
 body {
-  font-family: "Open Sans", Arial, sans-serif;
-  line-height: 1.6;
-  color: #222;
-  background-color: #fff;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
-
-.container {
-  width: 90%;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* ---------------------------
-   2. TYPOGRAPHY
------------------------------- */
-
-h1, h2, h3 {
-  font-family: "Merriweather", Georgia, serif;
-  color: #0056b3;
-}
-
-h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-}
-
-h2 {
-  font-size: 1.6rem;
-  margin: 1.5rem 0 0.5rem;
-}
-
-h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-}
-
-p {
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-/* ---------------------------
-   3. NAVIGATION BAR
------------------------------- */
-
+/* ========== NAVBAR ========== */
 .navbar {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #e1e1e1;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  padding: 0.7rem 0;
-}
-
-.navbar .container {
+  height: var(--nav-height);
+  background: var(--nav);
+  color: #fff;
+  padding: 0px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo img {
-  width: 45px;
-  height: auto;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.navbar a {
   text-decoration: none;
+  color: #fff;
 }
 
 .nav-links a {
-  text-decoration: none;
-  color: #0056b3;
+  margin-left: 20px;
+  font-size: 15.5px;
   font-weight: 600;
-  transition: color 0.3s ease;
+  letter-spacing: 0.2px;
+  color: #fff;
+  opacity: 0.9;
+  text-decoration: none;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-  color: #4da3ff;
+.nav-links a:hover {
+  opacity: 1;
+  text-decoration: dotted;
 }
 
-#theme-toggle {
-  border: none;
+#themeToggle {
   background: none;
+  border: none;
+  font-size: 18px;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 
-/* ---------------------------
-   4. HERO SECTION
------------------------------- */
+/* ========== LAYOUT ========== */
+.layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  padding: 24px 40px;
+  overflow: hidden;
+}
 
-.hero {
-  background: linear-gradient(to bottom right, #0056b3, #4da3ff);
+/* ========== SIDEBAR ========== */
+.sidebar {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.sidebar h3 {
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: var(--muted);
+}
+
+.sidebar li {
+  list-style: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sidebar li:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* ========== HERO CARDS ========== */
+.hero-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--section-gap);
+}
+
+.hero-card {
+  height: 140px;
+  border-radius: 10px;
   color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-1 { background-image: url("../images/hero-images/hero1.jpg"); }
+.hero-2 { background-image: url("../images/hero-images/hero2.jpg"); }
+.hero-3 { background-image: url("../images/hero-images/hero3.jpg"); }
+
+/* ========== GRID ========== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.box {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.box h4 {
+  margin-bottom: 8px;
+}
+
+:root {
+  --nav-height: 64px;
+  --section-gap: 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* ========== FOOTER ========== */
+footer {
   text-align: center;
-  padding: 5rem 1rem;
+  padding: 20px;
+  font-size: 13px;
+  color: var(--muted);
 }
 
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-cards,
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-.hero p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+.nav-links a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #fff;
 }
-
-.cta-buttons a {
-  display: inline-block;
-  margin: 0.5rem;
-}
-
-/* ---------------------------
-   5. BUTTONS
------------------------------- */
-
-.btn-primary,
-.btn-secondary {
-  padding: 0.6rem 1.3rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn-primary {
-  background-color: #0056b3;
-  color: #fff;
-}
-
-.btn-primary:hover {
-  background-color: #4da3ff;
-}
-
-.btn-secondary {
-  border: 2px solid #0056b3;
-  color: #0056b3;
-  background: transparent;
-}
-
-.btn-secondary:hover {
-  background-color: #0056b3;
-  color: #fff;
-}
-
-/* ---------------------------
-   6. PAGE HEADER
------------------------------- */
 
 .page-header {
-  background-color: #e9f2ff;
-  padding: 2.5rem 1rem;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-/* ---------------------------
-   7. SERVICES & CONTENT
------------------------------- */
-
-.service-card {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: var(--card);
+  padding: 20px;
   border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.service-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.page-header h2 {
+  margin-bottom: 6px;
 }
 
-/* ---------------------------
-   8. TEAM GRID
------------------------------- */
+.nav-links a.active {
+  font-weight: 600;
+  border-bottom: 2px solid #fff;
+}
 
+.calendar-list {
+  list-style: none;
+  margin-top: 12px;
+}
+
+.calendar-list li {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.calendar-list .date {
+  font-weight: 600;
+  color: #2563eb;
+  min-width: 60px;
+}
+
+.calendar-list .event {
+  color: var(--text);
+}
+
+.countdown-title {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.countdown-time {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 8px 0 12px;
+  color: #ef4444;
+}
+
+.btn-link {
+  font-size: 14px;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+/* TEAM */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.team-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: top right;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .team-card {
   text-align: center;
-  background: #fff;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
 }
 
-.team-card img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 0.8rem;
+/* SOCIALS */
+.socials {
+  margin-top: 8px;
 }
 
-/* ---------------------------
-   9. BLOG GRID
------------------------------- */
-
-/* .blog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+.socials a {
+  margin: 0 8px;
+  font-size: 18px;
+  color: var(--muted);
 }
 
-.blog-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  transition: box-shadow 0.3s ease;
+/* =========================
+   TESTIMONIALS (IMPROVED)
+========================= */
+
+.testimonials {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 16px;
 }
 
-.blog-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.blog-card h3 {
-  padding: 0.8rem 1rem 0;
-}
-
-.blog-card p {
-  padding: 0 1rem 1rem;
-}
-
-.blog-card:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-} */
-
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  align-items: stretch; /* ensures equal card height */
-}
-
-.blog-card {
-  display: flex;
-  flex-direction: column; /* stack items vertically */
-  justify-content: space-between; /* space between text and button */
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  transition: box-shadow 0.3s ease;
-}
-
-.blog-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.blog-card h3 {
-  padding: 0.8rem 1rem 0;
-  font-weight: 600;
-}
-
-.blog-card p {
-  flex-grow: 1; /* allows text to take flexible space */
-  padding: 0 1rem;
-  color: #555;
-}
-
-.blog-card a.read-more {
-  display: inline-block;
-  margin: 1rem;
-  padding: 0.6rem 1.2rem;
-  background-color: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  align-self: flex-start; /* keeps button aligned neatly */
-  transition: background 0.3s ease;
-}
-
-.blog-card a.read-more:hover {
-  background-color: #0056b3;
-}
-
-.blog-card:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-
-/* ---------------------------
-   10. GALLERY SECTION
------------------------------- */
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.gallery-item {
+/* Carousel container */
+.testimonial-carousel {
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  margin-top: 30px;
 }
 
-.gallery-item img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+/* Track */
+.testimonial-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  z-index: 1;
 }
 
-.gallery-item:hover img {
-  transform: scale(1.05);
-}
-
-.caption {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: rgba(0, 86, 179, 0.8);
-  color: #fff;
+/* Individual slide */
+.testimonial-card {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: 0.5rem;
-  font-size: 0.9rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  padding: 20px 60px;
+  
 }
 
-.gallery-item:hover .caption {
-  opacity: 1;
+/* Bigger image */
+.testimonial-card img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 4px solid #0f2a44;
 }
 
-/* ---------------------------
-   11. CONTACT PAGE
------------------------------- */
+/* Testimonial message */
+.testimonial-content p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 700px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
 
-.contact-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+/* Name */
+.testimonial-content strong {
+  font-size: 18px;
+  color: var(--text);
+}
+
+/* Role */
+.testimonial-content small {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0f2a44;
+  color: white;
+  border: none;
+  font-size: 22px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.carousel-btn:hover {
+  background: #163c63;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form label {
+  font-size: 13px;
+  color: var(--muted);
 }
 
 .contact-form input,
-.contact-form textarea,
-.contact-form select {
+.contact-form textarea {
   width: 100%;
-  padding: 0.7rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
+  padding: 10px;
   border-radius: 8px;
-  font-family: inherit;
+  border: 1px solid #ddd;
+  font-size: 14px;
 }
 
-.checkbox {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+.contact-form button {
+  background: #0f2a44;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 6px;
 }
 
-/* ---------------------------
-   12. FAQ SECTION
------------------------------- */
-
-.faq-section {
-  margin: 3rem 0;
-}
-
-.faq-item {
-  margin-bottom: 1.2rem;
-  border-left: 3px solid #0056b3;
-  padding-left: 1rem;
-}
-
-/* ---------------------------
-   13. ERROR PAGE (404)
------------------------------- */
-
-.error-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
-  text-align: center;
-}
-
-.error-code {
-  font-size: 5rem;
-  color: #0056b3;
-  margin-bottom: 1rem;
-}
-
-/* ---------------------------
-   14. FOOTER
------------------------------- */
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-  border-top: 1px solid #e1e1e1;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-/* ---------------------------
-   15. DARK MODE
------------------------------- */
-
-body.dark-mode {
-  background-color: #0a1a2f;
-  color: #e1e1e1;
-}
-
-body.dark-mode .navbar {
-  background-color: #122a4d;
-  border-color: #1c3c6b;
-}
-
-body.dark-mode .service-card,
-body.dark-mode .blog-card,
-body.dark-mode .team-card {
-  background: #122a4d;
-  border-color: #1c3c6b;
-}
-
-body.dark-mode footer {
-  border-color: #1c3c6b;
-  color: #aaa;
-}
-
-/* ---------------------------
-   16. RESPONSIVENESS
------------------------------- */
-
-@media (max-width: 768px) {
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .hero h1 {
-    font-size: 1.9rem;
-  }
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
+.contact-form button:hover {
+  background: #163c63;
 }

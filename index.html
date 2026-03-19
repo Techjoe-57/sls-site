@@ -1,33 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ==============================================
-       SMART LIFE SOLUTIONS - HOME PAGE
-       Author: Smart Life Solutions (SLS)
-       Version: 1.0 | October 2025
-  =============================================== -->
   <meta charset="UTF-8" />
+  <title>Dashboard | SmartLife</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Smart Life Solutions equips students with life skills, mentorship, and tools for success." />
-  <title>Smart Life Solutions | Home</title>
 
-  <!-- Link to CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/style.css" />
-
-  <!-- Favicon Placeholder -->
-  <link rel="icon" href="assets/images/favicon.png" type="image/png" />
 </head>
-<body>
-  <!-- ======================
-       NAVIGATION BAR
-  ======================= -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="logo">
-        <!-- <img src="assets/images/sls-logo-light.svg" alt="Smart Life Solutions Logo" /> -->
-        <h2>Smart Life Solutions</h2>
-      </div>
 
+<body>
+
+<<<<<<< HEAD
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>
         <a href="about.html" target="_blank" >About</a>
@@ -39,70 +24,153 @@
       </div>
     </div>
   </nav>
+=======
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+    <h1><a href="index.html">smartlife.com</a></h1>
+>>>>>>> origin/contact_form
 
-  <!-- ======================
-       HERO SECTION
-  ======================= -->
-  <section class="hero">
-    <h1>Empowering Students for a Smarter Future</h1>
-    <p>
-      Smart Life Solutions (SLS) helps young adults develop practical life skills,
-      financial literacy, and digital confidence through mentorship and workshops.
-    </p>
-    <div class="cta-buttons">
-      <a href="about.html" class="btn-primary">Learn More</a>
-      <a href="contact.html" class="btn-secondary">Get Involved</a>
-    </div>
-  </section>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Dashboard</a>
+      <a href="about.html">About</a>
+      <a href="mentorship.html">Mentorship</a>
+      <a href="study-hub.html">Study Hub</a>
+      <a href="jobs.html">Jobs & Gigs</a>
+    </nav>
 
-  <!-- ======================
-       FEATURED SERVICES
-  ======================= -->
-  <section class="container">
-    <h2>Our Core Programs</h2>
-    <div class="team-grid">
-      <div class="service-card">
-        <h3>Time & Mind Management</h3>
-        <p>Master time management with practical tools and self-assessment exercises.</p>
-      </div>
-      <div class="service-card">
-        <h3>Financial Literacy</h3>
-        <p>Gain essential budgeting and investing skills for financial independence.</p>
-      </div>
-      <div class="service-card">
-        <h3>Leadership Grooming</h3>
-        <p>Grow your leadership and teamwork abilities through cohort-based learning.</p>
-      </div>
-    </div>
-  </section>
+    <button id="themeToggle">🌙</button>
+  </header>
 
-  <!-- ======================
-       TESTIMONIALS (PLACEHOLDER)
-  ======================= -->
-  <section class="container">
-    <h2>What Students Say</h2>
-    <div class="team-grid">
-      <div class="service-card">
-        <p>“Smart Life Solutions transformed how I manage my time and finances.”</p>
-        <strong>— Student Member</strong>
-      </div>
-      <div class="service-card">
-        <p>“The workshops were practical and changed my mindset toward success.”</p>
-        <strong>— Volunteer</strong>
-      </div>
-    </div>
-  </section>
+  <!-- ================= MAIN LAYOUT ================= -->
+  <div class="layout">
 
-  <!-- ======================
-       FOOTER
-  ======================= -->
+<!-- SIDEBAR (SAME AS OTHER PAGES) -->
+    <aside class="sidebar">
+      <h3>Contact SmartLife</h3>
+
+      <form class="contact-form" id="contactForm">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="tel" name="tel" placeholder="Your Phone">
+        <input type="text" name="institution" placeholder="Your Institution">
+        <label for="level">Year of Study</label>
+        <input list="years" name="years" id="year" placeholder="--Select an option--" />
+        <datalist id="years">
+          <option value="1st Year">
+          <option value="2nd Year">
+          <option value="3rd Year">
+          <option value="4th Year">
+        </datalist>
+
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p class="form-status"></p>
+      </form>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- HERO CARDS -->
+      <section class="hero-cards">
+        <div class="hero-card hero-1">
+            <h2>Unlock Your Potential</h2>
+          <p>Connect & Grow</p>
+        </div>
+
+        <div class="hero-card hero-2">
+          <h2>Build Skills</h2>
+          <p>Learn from mentors</p>
+        </div>
+
+        <div class="hero-card hero-3">
+          <h2>Find Opportunities</h2>
+          <p>Jobs & internships</p>
+        </div>
+      </section>
+
+      <!-- DASHBOARD GRID -->
+      <section class="grid">
+        <div class="box">
+          <i class="fas fa-book-open icon"></i>
+          <h4>Study Hub</h4>
+          <p>Learning resources & courses.</p>
+        </div>
+
+        <div class="box">
+          <i class="fas fa-handshake icon"></i>
+          <h4>Mentorship</h4>
+          <p>Connect with professionals.</p>
+        </div>
+
+        <div class="box">
+          <i class="fas fa-briefcase icon"></i>
+          <h4>Jobs & Internships</h4>
+          <p>Career opportunities.</p>
+        </div>
+
+        <div class="box">
+          <i class="fas fa-user-friends icon"></i>
+          <h4>Clubs & Groups</h4>
+          <p>Join learning communities.</p>
+        </div>
+
+        <div class="box">
+          <i class="fas fa-toolbox icon"></i>
+          <h4>Resources</h4>
+          <p>Helpful tools & guides.</p>
+        </div>
+
+        <div class="box calendr-widget">
+          <h4> 📅 Upcoming Events</h4>
+
+          <ul class="calendar-list">
+            <li>
+              <span class="date">Feb 20</span>
+              <span class="event">Mentorship Session</span>
+            </li>
+             <li>
+              <span class="date">Feb 27</span>
+              <span class="event">Mentorship Session</span>
+            </li>
+             <li>
+              <span class="date">April 12</span>
+              <span class="event">Mentorship Session</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="box countdown-widget">
+          <h4>⏳ Next Event</h4>
+
+          <p class="countdown-title">Live Mentorship Session</p>
+
+          <p id="countdownTimer" class="countdown-time">Loading....</p>
+
+          <a 
+          href="https://meet.google.com/ytd-tdom-hgs"
+          target="_blank"
+          class="btn-link"
+          >
+          Join via Google Meet Session →         
+        </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
   <footer>
-    <p>© 2025 Smart Life Solutions. All Rights Reserved.</p>
+    © 2025 SmartLife. All rights reserved.
+    <div class="socials">
+      <a href="https://www.facebook.com/share/17zTtps8qu/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/slsghana?igsh=a2YwZGRvdDFydnp3" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/smart-life-solutions-ghana/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-x"></i></a>
+    </div>
   </footer>
 
-  <!-- ======================
-       SCRIPTS
-  ======================= -->
+  <!-- JS -->
   <script src="assets/js/script.js"></script>
 </body>
 </html>

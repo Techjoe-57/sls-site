@@ -1,137 +1,166 @@
-/* =====================================================
-   SMART LIFE SOLUTIONS WEBSITE
-   MAIN JAVASCRIPT - v1.0 (October 2025)
-   Author: Smart Life Solutions (SLS)
-   ===================================================== */
+const toggle = document.getElementById("themeToggle");
 
-/* ---------------------------
-   1. DARK / LIGHT MODE TOGGLE
------------------------------- */
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
 
-// Grab the theme toggle button
-const themeToggle = document.getElementById("theme-toggle");
-
-// Check for saved preference in localStorage
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark-mode");
-}
-
-// Add a click listener to toggle between modes
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-
-  // Save preference to localStorage
-  if (document.body.classList.contains("dark-mode")) {
-    localStorage.setItem("theme", "dark");
-  } else {
-    localStorage.setItem("theme", "light");
-  }
-
-  // Optional: Toggle the icon text if desired
-  themeToggle.textContent = document.body.classList.contains("dark-mode")
-    ? "🌙"
-    : "☀️";
+  toggle.textContent =
+    document.body.classList.contains("dark") ? "☀️" : "🌙";
 });
 
-/* ---------------------------
-   2. GALLERY POPUP ALERT
------------------------------- */
+const eventDate = new Date("2026-02-20T18:00:00").getTime();
+const countdownEl = document.getElementById("countdownTimer");
 
-// Select all gallery items that have the "gallery-item" class
-const galleryItems = document.querySelectorAll(".gallery-item");
+if (countdownEl) {
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
 
-// Add event listener to each gallery item
-galleryItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    const caption = item.querySelector(".caption")?.innerText || "Gallery item";
-    alert(`You clicked on: ${caption}`);
-  });
-});
-
-/* ---------------------------
-   3. CONTACT FORM ALERT SIMULATION
------------------------------- */
-
-// Get reference to the contact form (if present)
-const contactForm = document.getElementById("contact-form");
-
-if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    // Collect data (optional future backend integration)
-    const name = contactForm.querySelector("input[name='name']").value;
-    const email = contactForm.querySelector("input[name='email']").value;
-
-    // Simple validation check
-    if (!name || !email) {
-      alert("Please fill in the required fields before submitting.");
+    if (distance < 0) {
+      countdownEl.textContent = "Event started!";
       return;
     }
 
-    // Simulated success message
-    alert(`Thank you ${name}! Your message has been received.`);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
 
-    // Reset form after submission
-    contactForm.reset();
-  });
+    countdownEl.textContent = `${days}d ${hours}h ${minutes}m`;
+  }, 1000);
 }
 
-/* ---------------------------
-   4. SCROLL-TO-TOP FEATURE
------------------------------- */
+// let currentSlide = 0;
+// let testimonialsData = [];
 
-// Create a scroll-to-top button dynamically
-const scrollBtn = document.createElement("button");
-scrollBtn.textContent = "⬆️";
-scrollBtn.id = "scroll-top";
-scrollBtn.style.cssText = `
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: #0056b3;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: none;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  transition: background 0.3s ease;
-`;
+// const track = document.getElementById("testimonialTrack");
 
-// Add button to the page
-document.body.appendChild(scrollBtn);
+// fetch("assets/data/testimonials.json")
+//   .then(res => res.json())
+//   .then(data => {
+//     testimonialsData = data;
+//     renderTestimonials();
+//     autoSlide();
+//   });
 
-// Show button when scrolling down 300px
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    scrollBtn.style.display = "block";
-  } else {
-    scrollBtn.style.display = "none";
-  }
-});
+// function renderTestimonials() {
+//   track.innerHTML = testimonialsData.map(t => `
+//     <div class="testimonial-card">
+//       <img src="${t.image}" alt="${t.name}">
+//       <div class="testimonial-content">
+//         <p>“${t.message}”</p>
+//         <strong>${t.name}</strong><br>
+//         <small>${t.institution}</small><br>
+//         <small>${t.level}</small>
+//       </div>
+//     </div>
+//   `).join("");
+// }
 
-// Scroll smoothly to top when clicked
-scrollBtn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
+// function moveSlide(direction) {
+//   currentSlide =
+//     (currentSlide + direction + testimonialsData.length) %
+//     testimonialsData.length;
+
+//   track.style.transform = `translateX(-${currentSlide * 100}%)`;
+// }
+
+// document.querySelector(".prev").onclick = () => moveSlide(-1);
+// document.querySelector(".next").onclick = () => moveSlide(1);
+
+// function autoSlide() {
+//   setInterval(() => moveSlide(1), 6000);
+// }
+
+let currentSlide = 0;
+let testimonialsData = [];
+
+const track = document.getElementById("testimonialTrack");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+
+fetch("assets/data/testimonials.json")
+  .then(res => res.json())
+  .then(data => {
+    testimonialsData = data;
+    renderTestimonials();
+    attachControls();
+    autoSlide();
   });
-});
 
-/* ---------------------------
-   5. RESPONSIVE NAV (OPTIONAL FUTURE USE)
------------------------------- */
-// For mobile responsiveness, add toggleable menu
-// Uncomment below if mobile nav collapses are implemented
-/*
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.querySelector(".nav-links");
+function renderTestimonials() {
+  track.innerHTML = testimonialsData.map(t => `
+    <div class="testimonial-card">
+      <img src="${t.image}" alt="${t.name}">
+      <div class="testimonial-content">
+        <p>“${t.message}”</p>
+        <strong>${t.name}</strong><br>
+        <small>${t.institution}</small><br>
+        <small>${t.level}</small>
+      </div>
+    </div>
+  `).join("");
 
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("show-menu");
+  updateSlide();
+}
+
+function attachControls() {
+  prevBtn.addEventListener("click", () => moveSlide(-1));
+  nextBtn.addEventListener("click", () => moveSlide(1));
+}
+
+function moveSlide(direction) {
+  currentSlide =
+    (currentSlide + direction + testimonialsData.length) %
+    testimonialsData.length;
+
+  updateSlide();
+}
+
+// function attachControls() {
+//   prevBtn.addEventListener("click", () => moveSlide(-1));
+//   nextBtn.addEventListener("click", () => moveSlide(1));
+// }
+
+function updateSlide() {
+  track.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+function autoSlide() {
+  setInterval(() => moveSlide(1), 6000);
+}
+
+// Reset the timer to prevent auto-slide disrupting manual clicks
+let autoTimer;
+
+function autoSlide() {
+  autoTimer = setInterval(() => moveSlide(1), 6000);
+}
+
+function moveSlide(direction) {
+  clearInterval(autoTimer);
+  currentSlide =
+    (currentSlide + direction + testimonialsData.length) %
+    testimonialsData.length;
+
+  updateSlide();
+  autoSlide();
+}
+// Mail Script
+emailjs.init("UkSAZDqrmMplp5IcO");
+
+const form = document.getElementById("contactForm");
+const status = document.querySelector(".form-status");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  emailjs.sendForm("service_iippmsj", "template_sdf8mu3", this)
+    .then(() => {
+      status.textContent = "Message sent successfully!";
+      status.style.color = "green";
+      form.reset();
+    })
+    .catch(() => {
+      status.textContent = "Something went wrong. Try again.";
+      status.style.color = "red";
+    });
 });
-*/
