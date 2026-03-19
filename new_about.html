@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About SmartLife</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="assets/css/new_style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR (SAME AS OTHER PAGES) -->
+  <header class="navbar">
+    <h1>smartlife.com</h1>
+
+    <nav class="nav-links">
+      <a href="new_index.html">Dashboard</a>
+      <a href="new_about.html" class="active">About</a>
+      <a href="mentorship.html">Mentorship</a>
+      <a href="study-hub.html">Study Hub</a>
+      <a href="jobs.html">Jobs & Gigs</a>
+    </nav>
+
+    <button id="themeToggle">🌙</button>
+  </header>
+
+  <div class="layout">
+
+    <!-- SIDEBAR (SAME AS OTHER PAGES) -->
+    <aside class="sidebar">
+      <h3>SmartFeed</h3>
+      <ul>
+        <li><i class="fas fa-book"></i> Resources</li>
+        <li><i class="fas fa-graduation-cap"></i> Study Zones</li>
+        <li><i class="fas fa-briefcase"></i> Career Tools</li>
+        <li><i class="fas fa-calendar"></i> Events</li>
+        <li><i class="fas fa-gear"></i> Settings</li>
+      </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+      <!-- 1️⃣ PAGE INTRO -->
+      <section class="page-header">
+        <h2>About SmartLife</h2>
+        <p>
+          SmartLife is a youth-focused platform dedicated to equipping individuals
+          with practical skills, mentorship, and opportunities to thrive in today’s world.
+        </p>
+      </section>
+
+      <!-- 2️⃣ MISSION & VISION -->
+      <section class="grid">
+        <div class="box">
+          <h4>🎯 Our Mission</h4>
+          <p>
+            Our mission is to nurture a generation committed to realizing God's purpose for their lives, 
+            leveraging their inherent potentials for fulfilment and societal impact.
+          </p>
+        </div>
+
+        <div class="box">
+          <h4>🌍 Our Vision</h4>
+          <p>
+            Our vision is to empower individuals to recognize and unlock their inherent potential, ensuring 
+            they understand their unique role in shaping the world and their generation.
+          </p>
+        </div>
+
+        <div class="box">
+          <h4>🎯 What you will benefit?</h4>
+          <p>
+            You’ll get practical, bite-size learning (Daily post, 30–60 minutes weekly micro-sessions online on academics, 
+            finance, time management, scholarship etc), weekly study and leadership activities, a peer-mentorship network, 
+            and direct pathways to internships and partner opportunities. Active volunteers receive training, digital badges, 
+            and certificates for their contributions.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3️⃣ WHAT WE OFFER -->
+      <section class="grid">
+        <div class="box">
+          <h4>🤝 Mentorship</h4>
+          <p>Guidance from experienced professionals and mentors.</p>
+        </div>
+
+        <div class="box">
+          <h4>📚 Learning Resources</h4>
+          <p>Practical courses, workshops, and study materials.</p>
+        </div>
+
+        <div class="box">
+          <h4>💼 Career Opportunities</h4>
+          <p>Jobs, internships, and freelance gigs.</p>
+        </div>
+      </section>
+
+      <!-- 4️⃣ FULL TESTIMONIALS (JSON-DRIVEN) -->
+      <section class="testimonials">
+        <h3>What People Say About SmartLife</h3>
+
+        <div class="testimonial-carousel">
+          <button class="carousel-btn prev">‹</button>
+
+          <div class="testimonial-track" id="testimonialTrack">
+            <!-- Loaded from testimonials.json -->
+          </div>
+
+          <button class="carousel-btn next">›</button>
+        </div>
+      </section>
+
+      <!-- 5️⃣ TEAM SECTION -->
+      <section class="team">
+        <h3>Meet the Team</h3>
+
+        <div class="grid">
+          <div class="box team-card">
+            <img src="assets/images/gifty.jpeg" alt="Team member" class="team-img">
+            <h4>Jane Doe</h4>
+            <p>Program Director</p>
+          </div>
+
+          <div class="box team-card">
+            <img src="assets/images/arthur_david.jpeg" alt="Team member" class="team-img">
+            <h4>John Smith</h4>
+            <p>Mentorship Lead</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6️⃣ PARTNERS -->
+      <!-- <section class="partners"> -->
+        <!-- <p>Trusted by communities and partners</p> -->
+
+        <!-- <div class="partner-logos"> -->
+          <!-- <img src="assets/images/logo1.png" alt="Partner"> -->
+          <!-- <img src="assets/images/logo2.png" alt="Partner"> -->
+          <!-- <img src="assets/images/logo3.png" alt="Partner"> -->
+          <!-- <img src="assets/images/logo4.png" alt="Partner"> -->
+        <!-- </div> -->
+      <!-- </section> -->
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 SmartLife. All rights reserved.</p>
+
+    <div class="socials">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-x"></i></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/new_script.js"></script>
+</body>
+</html>
