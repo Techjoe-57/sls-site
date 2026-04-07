@@ -399,3 +399,81 @@ footer {
 .contact-form button:hover {
   background: #163c63;
 }
+
+/* HIGHLIGHTS SECTION */
+/* SIMPLE SLIDER */
+.simple-slider {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+/* Container */
+.slider-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Buttons */
+.simple-prev,
+.simple-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background: #0f2a44;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Each slide */
+.slide {
+  display: none;
+  align-items: center;
+  gap: 20px;
+  background: var(--card);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+/* Active slide */
+.slide.active {
+  display: flex;
+}
+
+/* Image */
+.slide img {
+  width: 200px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Text */
+.slide-text {
+  max-width: 420px;
+}
+
+.slide-text h3 {
+  margin-bottom: 6px;
+}
+
+.slide-text p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+
+
+.simple-prev { left: 10px; }
+.simple-next { right: 10px; }
+
+.simple-prev:hover,
+.simple-next:hover {
+  background: #163c63;
+}

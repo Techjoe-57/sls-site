@@ -1,3 +1,4 @@
+// Dark mode or light button toggle
 const toggle = document.getElementById("themeToggle");
 
 toggle.addEventListener("click", () => {
@@ -7,6 +8,7 @@ toggle.addEventListener("click", () => {
     document.body.classList.contains("dark") ? "☀️" : "🌙";
 });
 
+// Event countdown
 const eventDate = new Date("2026-02-20T18:00:00").getTime();
 const countdownEl = document.getElementById("countdownTimer");
 
@@ -28,48 +30,7 @@ if (countdownEl) {
   }, 1000);
 }
 
-// let currentSlide = 0;
-// let testimonialsData = [];
-
-// const track = document.getElementById("testimonialTrack");
-
-// fetch("assets/data/testimonials.json")
-//   .then(res => res.json())
-//   .then(data => {
-//     testimonialsData = data;
-//     renderTestimonials();
-//     autoSlide();
-//   });
-
-// function renderTestimonials() {
-//   track.innerHTML = testimonialsData.map(t => `
-//     <div class="testimonial-card">
-//       <img src="${t.image}" alt="${t.name}">
-//       <div class="testimonial-content">
-//         <p>“${t.message}”</p>
-//         <strong>${t.name}</strong><br>
-//         <small>${t.institution}</small><br>
-//         <small>${t.level}</small>
-//       </div>
-//     </div>
-//   `).join("");
-// }
-
-// function moveSlide(direction) {
-//   currentSlide =
-//     (currentSlide + direction + testimonialsData.length) %
-//     testimonialsData.length;
-
-//   track.style.transform = `translateX(-${currentSlide * 100}%)`;
-// }
-
-// document.querySelector(".prev").onclick = () => moveSlide(-1);
-// document.querySelector(".next").onclick = () => moveSlide(1);
-
-// function autoSlide() {
-//   setInterval(() => moveSlide(1), 6000);
-// }
-
+//Testimonial slide script
 let currentSlide = 0;
 let testimonialsData = [];
 
@@ -115,11 +76,6 @@ function moveSlide(direction) {
   updateSlide();
 }
 
-// function attachControls() {
-//   prevBtn.addEventListener("click", () => moveSlide(-1));
-//   nextBtn.addEventListener("click", () => moveSlide(1));
-// }
-
 function updateSlide() {
   track.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
@@ -145,22 +101,85 @@ function moveSlide(direction) {
   autoSlide();
 }
 // Mail Script
-emailjs.init("UkSAZDqrmMplp5IcO");
+// emailjs.init("UkSAZDqrmMplp5IcO");
 
 const form = document.getElementById("contactForm");
 const status = document.querySelector(".form-status");
 
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
+if (form) {
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
 
-  emailjs.sendForm("service_iippmsj", "template_sdf8mu3", this)
-    .then(() => {
-      status.textContent = "Message sent successfully!";
-      status.style.color = "green";
-      form.reset();
-    })
-    .catch(() => {
-      status.textContent = "Something went wrong. Try again.";
-      status.style.color = "red";
-    });
+    emailjs.sendForm("service_iippmsj", "template_sdf8mu3", this)
+      .then(() => {
+        status.textContent = "Message sent successfully!";
+        status.style.color = "green";
+        form.reset();
+      })
+      .catch(() => {
+        status.textContent = "Something went wrong. Try again.";
+        status.style.color = "red";
+      });
+  });
+}
+
+
+//Slider
+// let currentSlidee = 0;
+// const slides = document.querySelectorAll(".slide");
+
+// function showSlide(index) {
+//   slides.forEach(s => s.classList.remove("active"));
+//   slides[index].classList.add("active");
+// }
+
+// document.querySelector(".simple-next").onclick = () => {
+//   currentSlidee = (currentSlidee + 1) % slides.length;
+//   showSlide(currentSlidee);
+// };
+
+// document.querySelector(".simple-prev").onclick = () => {
+//   currentSlidee = (currentSlidee - 1 + slides.length) % slides.length;
+//   showSlide(currentSlidee);
+// };
+
+// /* Auto slide */
+// setInterval(() => {
+//   currentSlidee = (currentSlidee + 1) % slides.length;
+//   showSlide(currentSlidee);
+// }, 5000);
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  let heroSlideIndex = 0;
+
+  const slides = document.querySelectorAll(".slide");
+  const nextBtn = document.querySelector(".simple-next");
+  const prevBtn = document.querySelector(".simple-prev");
+
+  // Stop if slider not on page
+  if (!slides.length || !nextBtn || !prevBtn) return;
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove("active"));
+    slides[index].classList.add("active");
+  }
+
+  nextBtn.addEventListener("click", () => {
+    heroSlideIndex = (heroSlideIndex + 1) % slides.length;
+    showSlide(heroSlideIndex);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    heroSlideIndex =
+      (heroSlideIndex - 1 + slides.length) % slides.length;
+    showSlide(heroSlideIndex);
+  });
+
+  // Auto slide
+  let auto = setInterval(() => {
+    heroSlideIndex = (heroSlideIndex + 1) % slides.length;
+    showSlide(heroSlideIndex);
+  }, 5000);
+
 });
