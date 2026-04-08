@@ -48,6 +48,11 @@ fetch("assets/data/testimonials.json")
   });
 
 function renderTestimonials() {
+  if (!track) {
+    console.error("Element #testimonialTrack not found in the DOM.");
+    return;
+  }
+  
   track.innerHTML = testimonialsData.map(t => `
     <div class="testimonial-card">
       <img src="${t.image}" alt="${t.name}">
@@ -101,14 +106,33 @@ function moveSlide(direction) {
   autoSlide();
 }
 // Mail Script
-// emailjs.init("UkSAZDqrmMplp5IcO");
+//emailjs.init("UkSAZDqrmMplp5IcO");
+// const form = document.getElementById("contactForm");
+// const status = document.querySelector(".form-status");
 
+// if (form) {
+//   form.addEventListener("submit", function(e) {
+//     e.preventDefault();
+
+//     emailjs.sendForm("service_iippmsj", "template_sdf8mu3", this)
+//       .then(() => {
+//         status.textContent = "Message sent successfully!";
+//         status.style.color = "green";
+//         form.reset();
+//       })
+//       .catch(() => {
+//         status.textContent = "Something went wrong. Try again.";
+//         status.style.color = "red";
+//       });
+//   });
+// }
 const form = document.getElementById("contactForm");
-const status = document.querySelector(".form-status");
 
 if (form) {
   form.addEventListener("submit", function(e) {
     e.preventDefault();
+
+    const status = form.querySelector(".form-status");
 
     emailjs.sendForm("service_iippmsj", "template_sdf8mu3", this)
       .then(() => {
@@ -117,37 +141,11 @@ if (form) {
         form.reset();
       })
       .catch(() => {
-        status.textContent = "Something went wrong. Try again.";
+        status.textContent = "Something went wrong.";
         status.style.color = "red";
       });
   });
 }
-
-
-//Slider
-// let currentSlidee = 0;
-// const slides = document.querySelectorAll(".slide");
-
-// function showSlide(index) {
-//   slides.forEach(s => s.classList.remove("active"));
-//   slides[index].classList.add("active");
-// }
-
-// document.querySelector(".simple-next").onclick = () => {
-//   currentSlidee = (currentSlidee + 1) % slides.length;
-//   showSlide(currentSlidee);
-// };
-
-// document.querySelector(".simple-prev").onclick = () => {
-//   currentSlidee = (currentSlidee - 1 + slides.length) % slides.length;
-//   showSlide(currentSlidee);
-// };
-
-// /* Auto slide */
-// setInterval(() => {
-//   currentSlidee = (currentSlidee + 1) % slides.length;
-//   showSlide(currentSlidee);
-// }, 5000);
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -183,3 +181,36 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 5000);
 
 });
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+}
+
+// Floating contact modal
+const contactFloat = document.getElementById("contactFloat");
+const contactModal = document.getElementById("contactModal");
+const closeModal = document.getElementById("closeModal");
+
+if (contactFloat && contactModal && closeModal) {
+
+  contactFloat.addEventListener("click", () => {
+    contactModal.classList.add("active");
+  });
+
+  closeModal.addEventListener("click", () => {
+    contactModal.classList.remove("active");
+  });
+
+  // Close when clicking outside
+  contactModal.addEventListener("click", (e) => {
+    if (e.target === contactModal) {
+      contactModal.classList.remove("active");
+    }
+  });
+
+}
