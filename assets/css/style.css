@@ -444,7 +444,7 @@ footer {
   font-size: 14px;
 }
 
-.simple-prev { left: 10px; }
+.simple-prev { left: 10px;}
 .simple-next { right: 10px; }
 
 .simple-prev:hover,
@@ -470,6 +470,10 @@ footer {
 @media (max-width: 768px) {
 
   .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-grid {
     grid-template-columns: 1fr;
   }
 
