@@ -7,6 +7,12 @@
 
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+      emailjs.init("UkSAZDqrmMplp5IcO"); // Replace with your actual Public Key
+   })();
+   </script>
 </head>
 
 <body>
@@ -14,29 +20,34 @@
   <!-- NAVBAR (SAME AS OTHER PAGES) -->
   <header class="navbar">
     <h1><a href="index.html">smartlife.com</a></h1>
-
-    <nav class="nav-links">
+    <nav class="nav-links" id="navLinks">
       <a href="index.html">Dashboard</a>
       <a href="about.html" class="active">About</a>
       <a href="mentorship.html">Mentorship</a>
       <a href="study-hub.html">Study Hub</a>
       <a href="jobs.html">Jobs & Gigs</a>
     </nav>
-
+    
+    <button class="menu-toggle" id="menuToggle">☰</button>
     <button id="themeToggle">🌙</button>
   </header>
 
-  <div class="layout">
+  <div class="layout no-sidebar">
+    <!-- FLOATING CONTACT -->
+ <button class="contact-float" id="contactFloat">💬</button>
 
-    <!-- SIDEBAR (SAME AS OTHER PAGES) -->
-    <aside class="sidebar">
+ <!-- Contact Modal -->
+  <div class="contact-modal" id="contactModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+
       <h3>Contact SmartLife</h3>
-
+      
       <form class="contact-form" id="contactForm">
-        <input type="text" name="name" placeholder="Your Full Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <input type="tel" name="tel" placeholder="Your Phone">
-        <input type="text" name="institution" placeholder="Your Institution">
+        <input type="text" name="name" placeholder="Your Full Name" required/>
+        <input type="email" name="email" placeholder="Your Email" required/>
+        <input type="tel" name="tel" placeholder="Your Phone"/>
+        <input type="text" name="institution" placeholder="Your Institution"/>
         <label for="level">Year of Study</label>
         <input list="years" name="years" id="year" placeholder="--Select an option--" />
         <datalist id="years">
@@ -45,12 +56,12 @@
           <option value="3rd Year">
           <option value="4th Year">
         </datalist>
-
         <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
         <p class="form-status"></p>
       </form>
-    </aside>
+      </div>
+  </div>
 
     <!-- MAIN CONTENT -->
     <main class="content">
@@ -138,18 +149,6 @@
           </div>
 
           <div class="box team-card">
-            <img src="assets/images/team-images/henritta_secretary.jpeg" alt="Team member" class="team-img">
-            <h4>Henritta Obeng</h4>
-            <p>General Secretary and Senior Steward</p>
-          </div>
-
-          <div class="box team-card">
-            <img src="assets/images/team-images/joshua_peer.jpeg" alt="Team member" class="team-img">
-            <h4>Joshua Zewu</h4>
-            <p>Peer Counsellor and Steward</p>
-          </div>
-
-          <div class="box team-card">
             <img src="assets/images/team-images/desmond_schools.jpeg" alt="Team member" class="team-img">
             <h4>Desmond Dela Addo</h4>
             <p>President and Schools Cordinator</p>
@@ -168,40 +167,57 @@
           </div>
 
           <div class="box team-card">
+            <img src="assets/images/team-images/henritta_secretary.jpeg" alt="Team member" class="team-img">
+            <h4>Henritta Obeng</h4>
+            <p>General Secretary and Senior Steward</p>
+          </div>
+
+          <div class="box team-card">
+            <img src="assets/images/team-images/baafi_financial_controller.jpeg" alt="Team member" class="team-img">
+            <h4>Baafi Asamoah</h4>
+            <p>Financial Controller and Assistant Team Leader</p>
+          </div>
+
+          <div class="box team-card">
+            <img src="assets/images/team-images/joshua_social_media_lead.jpeg" alt="Team member" class="team-img">
+            <h4>Joshua Horlortu</h4>
+            <p>Social Media Team Lead</p>
+          </div>
+
+          <div class="box team-card">
             <img src="assets/images/team-images/clinton_business.jpeg" alt="Team member" class="team-img">
             <h4>Clinton Agyekum</h4>
             <p>Business Unit Lead</p>
           </div>
 
           <div class="box team-card">
-            <img src="assets/images/team-images/rachael_academic.jpeg" alt="Team member" class="team-img">
-            <h4>Rachael Asare</h4>
-            <p>Academic Support Team Member and Steward</p>
+            <img src="assets/images/team-images/joshua_peer.jpeg" alt="Team member" class="team-img">
+            <h4>Joshua Zewu</h4>
+            <p>Peer Counsellor and Steward</p>
           </div>
-          <div class="box team-card">
-            <img src="assets/images/team-images/baafi_financial_controller.jpeg" alt="Team member" class="team-img">
-            <h4>Baafi Asamoah</h4>
-            <p>Financial Controller and Assistant Team Leader</p>
-          </div>
+
           <div class="box team-card">
             <img src="assets/images/team-images/dinah_book_review_lead.jpeg" alt="Team member" class="team-img">
             <h4>Dinah Adjeiwah Asare</h4>
             <p>Book Review Team Lead</p>
           </div>
-          <div class="box team-card">
-            <img src="assets/images/team-images/ephraim_academ_excell_assist.jpeg" alt="Team member" class="team-img">
-            <h4>Ephraim Oracca-Tetteh</h4>
-            <p>Academic Excellence Assistant</p>
-          </div>
+
           <div class="box team-card">
             <img src="assets/images/team-images/charlcy_book_review_assist.jpeg" alt="Team member" class="team-img">
             <h4>Charlcy Amo Asante</h4>
             <p>Book Review Assistant Lead</p>
           </div>
+
           <div class="box team-card">
-            <img src="assets/images/team-images/joshua_social_media_lead.jpeg" alt="Team member" class="team-img">
-            <h4>Joshua Horlortu</h4>
-            <p>Social Media Team Lead</p>
+            <img src="assets/images/team-images/ephraim_academ_excell_assist.jpeg" alt="Team member" class="team-img">
+            <h4>Ephraim Oracca-Tetteh</h4>
+            <p>Academic Excellence Assistant</p>
+          </div>
+
+          <div class="box team-card">
+            <img src="assets/images/team-images/rachael_academic.jpeg" alt="Team member" class="team-img">
+            <h4>Rachael Asare</h4>
+            <p>Academic Support Team Member and Steward</p>
           </div>
       </section>
 
@@ -233,6 +249,5 @@
   </footer>
 
   <script src="assets/js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </body>
 </html>
