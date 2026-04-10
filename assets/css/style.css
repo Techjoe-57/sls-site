@@ -100,7 +100,7 @@ body {
   /* overflow: hidden; */
 }
 
-/* ========== GRID ========== */
+/* ========== GRIDS ========== */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -131,6 +131,27 @@ body {
   width: 100%;
   flex: 1;
   width: 100%;
+}
+
+.gridTwo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2opx;
+}
+
+.boxTwo {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.boxTwo h4 {
+  margin-bottom: 8px;
+}
+
+.boxTwo li {
+  margin-left: 20px;
+  list-style: square;
 }
 
 /* ========== FOOTER ========== */
