@@ -3,3 +3,9 @@
 *.Identifier
 # All System files
 *.db
+# Node Modules
+/node_modules
+
+# Node packages
+package-lock.json
+package.json
