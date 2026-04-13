@@ -9,27 +9,98 @@ toggle.addEventListener("click", () => {
 });
 
 // Event countdown
-const eventDate = new Date("2026-04-20T18:00:00").getTime();
-const countdownEl = document.getElementById("countdownTimer");
+// const eventDate = new Date("2026-04-20T18:00:00").getTime();
+// const countdownEl = document.getElementById("countdownTimer");
 
-if (countdownEl) {
+// if (countdownEl) {
+//   setInterval(() => {
+//     const now = new Date().getTime();
+//     const distance = eventDate - now;
+
+//     if (distance < 0) {
+//       countdownEl.textContent = "Event started!";
+//       return;
+//     }
+
+//     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+//     const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+//     const minutes = Math.floor((distance / (1000 * 60)) % 60);
+
+//     countdownEl.textContent = `${days}d ${hours}h ${minutes}m`;
+//   }, 1000);
+// }
+
+// const now = new Date();
+// const eventDate = new Date();
+
+// eventDate.setHours(18, 0, 0, 0); // 6:00 PM today
+
+// // If time has already passed, move to tomorrow
+// if (eventDate.getTime() < now.getTime()) {
+//   eventDate.setDate(eventDate.getDate() + 1);
+// }
+
+// const countdownEl = document.getElementById("countdownTimer");
+// const events = document.querySelectorAll(".calendar-list li");
+
+// let nextEventDate = null;
+
+// if (countdownEl) {
+//   setInterval(() => {
+//     const now = new Date().getTime();
+//     const distance = eventDate.getTime() - now;
+
+//     if (distance < 0) {
+//       countdownEl.textContent = "Event started!";
+//       return;
+//     }
+
+//     const days = Math.floor(distance / (1000 * 60 * 60 *24));
+//     const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+//     const minutes = Math.floor((distance / (1000 * 60)) % 60);
+//     const seconds = Math.floor((distance / 1000) % 60);
+
+//     countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+//   }, 1000);
+// }
+
+// Event countdown
+const countdownEl = document.getElementById("countdownTimer")
+const events = document.querySelectorAll(".calendar-list li")
+
+let nextEventDate = null;
+
+events.forEach(event => {
+  const date = new Date(event.dataset.date).getTime();
+  const now = new Date().getTime();
+
+  if (date > now) {
+    if (!nextEventDate || date < nextEventDate) {
+      nextEventDate = date;
+    }
+  }
+});
+
+if (countdownEl && nextEventDate) {
   setInterval(() => {
+
     const now = new Date().getTime();
-    const distance = eventDate - now;
+    const distance = nextEventDate - now;
 
     if (distance < 0) {
-      countdownEl.textContent = "Event started!";
+      countdownEl.textContent = "Event Started!";
       return;
     }
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
     const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
 
-    countdownEl.textContent = `${days}d ${hours}h ${minutes}m`;
+    countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }, 1000);
 }
-
+ 
 //Testimonial slide script
 let currentSlide = 0;
 let testimonialsData = [];
