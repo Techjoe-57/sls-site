@@ -265,3 +265,23 @@ if (contactFloat && contactModal && closeModal) {
   });
 
 }
+
+// Blog Script
+fetch('assets/data/blog.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('blogContainer');
+
+    data.forEach(post => {
+      container.innerHTML += `
+        <div class="blog-card">
+          <img src="${post.image}" alt="">
+          <div class="blog-content">
+            <h3>${post.title}</h3>
+            <p>${post.content}</p>
+            <a href="#">Read More →</a>
+          </div>
+        </div>
+      `;
+    });
+  });
