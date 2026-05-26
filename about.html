@@ -5,38 +5,51 @@
   <title>About | SmartLife</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/about_style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+      emailjs.init("UkSAZDqrmMplp5IcO"); // Replace with your actual Public Key
+   })();
+   </script>
 </head>
 
 <body>
 
-  <!-- NAVBAR (SAME AS OTHER PAGES) -->
+  <!-- NAVBAR -->
   <header class="navbar">
     <h1><a href="index.html">smartlife.com</a></h1>
-
-    <nav class="nav-links">
+    <nav class="nav-links" id="navLinks">
       <a href="index.html">Dashboard</a>
       <a href="about.html" class="active">About</a>
+      <a href="solutions.html">Solutions</a>
       <a href="mentorship.html">Mentorship</a>
       <a href="study-hub.html">Study Hub</a>
       <a href="jobs.html">Jobs & Gigs</a>
+      <a href="blog.html">Blog</a>
     </nav>
-
+    
+    <button class="menu-toggle" id="menuToggle">☰</button>
     <button id="themeToggle">🌙</button>
   </header>
 
-  <div class="layout">
+  <div class="layout no-sidebar">
+    <!-- FLOATING CONTACT -->
+ <button class="contact-float" id="contactFloat">💬</button>
 
-    <!-- SIDEBAR (SAME AS OTHER PAGES) -->
-    <aside class="sidebar">
+ <!-- Contact Modal -->
+  <div class="contact-modal" id="contactModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+
       <h3>Contact SmartLife</h3>
-
+      
       <form class="contact-form" id="contactForm">
-        <input type="text" name="name" placeholder="Your Full Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <input type="tel" name="tel" placeholder="Your Phone">
-        <input type="text" name="institution" placeholder="Your Institution">
+        <input type="text" name="name" placeholder="Your Full Name" required/>
+        <input type="email" name="email" placeholder="Your Email" required/>
+        <input type="tel" name="tel" placeholder="Your Phone"/>
+        <input type="text" name="institution" placeholder="Your Institution"/>
         <label for="level">Year of Study</label>
         <input list="years" name="years" id="year" placeholder="--Select an option--" />
         <datalist id="years">
@@ -45,12 +58,12 @@
           <option value="3rd Year">
           <option value="4th Year">
         </datalist>
-
         <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
         <p class="form-status"></p>
       </form>
-    </aside>
+      </div>
+  </div>
 
     <!-- MAIN CONTENT -->
     <main class="content">
@@ -83,32 +96,28 @@
         </div>
 
         <div class="box">
-          <h4>🎯 What you will benefit?</h4>
+          <h4>🌱 Purpose</h4>
           <p>
-            You’ll get practical, bite-size learning (Daily post, 30–60 minutes weekly micro-sessions online on academics, 
-            finance, time management, scholarship etc), weekly study and leadership activities, a peer-mentorship network, 
-            and direct pathways to internships and partner opportunities. Active volunteers receive training, digital badges, 
-            and certificates for their contributions.
+            Our purpose is to inspire and facilitate individuals in their journey towards fulfilling their destinies, 
+            serving as beacons of hope and catalysts for positive change
           </p>
         </div>
       </section>
-
-      <!-- 3️⃣ WHAT WE OFFER -->
-      <section class="grid">
-        <div class="box">
-          <h4>🤝 Mentorship</h4>
-          <p>Guidance from experienced professionals and mentors.</p>
+      
+      <section class="gridTwo">
+        <div class="boxTwo">
+          <h4>💡Why SLS exists?</h4>
+          <ul>
+            <li>Many students enter university without direction</li>
+            <li>They struggle with transition</li>
+            <li>They struggle academically</li>
+            <li>They lack career clarity</li>
+            <li>They graduate without relevant skills or experience</li>
+            <li>They show apathy towards leadership roles</li>
+            <li>Smart Life Solutions (SLS) bridges this gap by providing support,  structure, mentorship, and opportunity</li>
+          </ul>
         </div>
 
-        <div class="box">
-          <h4>📚 Learning Resources</h4>
-          <p>Practical courses, workshops, and study materials.</p>
-        </div>
-
-        <div class="box">
-          <h4>💼 Career Opportunities</h4>
-          <p>Jobs, internships, and freelance gigs.</p>
-        </div>
       </section>
 
       <!-- 4️⃣ FULL TESTIMONIALS (JSON-DRIVEN) -->
@@ -138,18 +147,6 @@
           </div>
 
           <div class="box team-card">
-            <img src="assets/images/team-images/henritta_secretary.jpeg" alt="Team member" class="team-img">
-            <h4>Henritta Obeng</h4>
-            <p>General Secretary and Senior Steward</p>
-          </div>
-
-          <div class="box team-card">
-            <img src="assets/images/team-images/joshua_peer.jpeg" alt="Team member" class="team-img">
-            <h4>Joshua Zewu</h4>
-            <p>Peer Counsellor and Steward</p>
-          </div>
-
-          <div class="box team-card">
             <img src="assets/images/team-images/desmond_schools.jpeg" alt="Team member" class="team-img">
             <h4>Desmond Dela Addo</h4>
             <p>President and Schools Cordinator</p>
@@ -168,9 +165,51 @@
           </div>
 
           <div class="box team-card">
+            <img src="assets/images/team-images/henritta_secretary.jpeg" alt="Team member" class="team-img">
+            <h4>Henritta Obeng</h4>
+            <p>General Secretary and Senior Steward</p>
+          </div>
+
+          <div class="box team-card">
+            <img src="assets/images/team-images/baafi_financial_controller.jpeg" alt="Team member" class="team-img">
+            <h4>Baafi Asamoah</h4>
+            <p>Financial Controller and Assistant Team Leader</p>
+          </div>
+
+          <div class="box team-card">
+            <img src="assets/images/team-images/joshua_social_media_lead.jpeg" alt="Team member" class="team-img">
+            <h4>Joshua Horlortu</h4>
+            <p>Social Media Team Lead</p>
+          </div>
+
+          <div class="box team-card">
             <img src="assets/images/team-images/clinton_business.jpeg" alt="Team member" class="team-img">
             <h4>Clinton Agyekum</h4>
             <p>Business Unit Lead</p>
+          </div>
+
+          <div class="box team-card">
+            <img src="assets/images/team-images/joshua_peer.jpeg" alt="Team member" class="team-img">
+            <h4>Joshua Zewu</h4>
+            <p>Peer Counsellor and Steward</p>
+          </div>
+
+          <div class="box team-card">
+            <img src="assets/images/team-images/dinah_book_review_lead.jpeg" alt="Team member" class="team-img">
+            <h4>Dinah Adjeiwah Asare</h4>
+            <p>Book Review Team Lead</p>
+          </div>
+
+          <div class="box team-card">
+            <img src="assets/images/team-images/charlcy_book_review_assist.jpeg" alt="Team member" class="team-img">
+            <h4>Charlcy Amo Asante</h4>
+            <p>Book Review Assistant Lead</p>
+          </div>
+
+          <div class="box team-card">
+            <img src="assets/images/team-images/ephraim_academ_excell_assist.jpeg" alt="Team member" class="team-img">
+            <h4>Ephraim Oracca-Tetteh</h4>
+            <p>Academic Excellence Assistant</p>
           </div>
 
           <div class="box team-card">
@@ -178,45 +217,7 @@
             <h4>Rachael Asare</h4>
             <p>Academic Support Team Member and Steward</p>
           </div>
-          <div class="box team-card">
-            <img src="assets/images/team-images/baafi_financial_controller.jpeg" alt="Team member" class="team-img">
-            <h4>Baafi Asamoah</h4>
-            <p>Financial Controller and Assistant Team Leader</p>
-          </div>
-          <div class="box team-card">
-            <img src="assets/images/team-images/dinah_book_review_lead.jpeg" alt="Team member" class="team-img">
-            <h4>Dinah Adjeiwah Asare</h4>
-            <p>Book Review Team Lead</p>
-          </div>
-          <div class="box team-card">
-            <img src="assets/images/team-images/ephraim_academ_excell_assist.jpeg" alt="Team member" class="team-img">
-            <h4>Ephraim Oracca-Tetteh</h4>
-            <p>Academic Excellence Assistant</p>
-          </div>
-          <div class="box team-card">
-            <img src="assets/images/team-images/charlcy_book_review_assist.jpeg" alt="Team member" class="team-img">
-            <h4>Charlcy Amo Asante</h4>
-            <p>Book Review Assistant Lead</p>
-          </div>
-          <div class="box team-card">
-            <img src="assets/images/team-images/joshua_social_media_lead.jpeg" alt="Team member" class="team-img">
-            <h4>Joshua Horlortu</h4>
-            <p>Social Media Team Lead</p>
-          </div>
       </section>
-
-      <!-- 6️⃣ PARTNERS -->
-      <!-- <section class="partners"> -->
-        <!-- <p>Trusted by communities and partners</p> -->
-
-        <!-- <div class="partner-logos"> -->
-          <!-- <img src="assets/images/logo1.png" alt="Partner"> -->
-          <!-- <img src="assets/images/logo2.png" alt="Partner"> -->
-          <!-- <img src="assets/images/logo3.png" alt="Partner"> -->
-          <!-- <img src="assets/images/logo4.png" alt="Partner"> -->
-        <!-- </div> -->
-      <!-- </section> -->
-
     </main>
   </div>
 
@@ -233,6 +234,5 @@
   </footer>
 
   <script src="assets/js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </body>
 </html>

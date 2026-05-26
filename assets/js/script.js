@@ -1,75 +1,117 @@
-const toggle = document.getElementById("themeToggle");
+// Dark mode or light button toggle
+// Dark/light mode function
+const btn = document.getElementById("themeToggle");
 
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+// Check the saved theme on load
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  if (btn) btn.textContent = "☀️"; // Optional: Change icon to sun in dark mode
+}
 
-  toggle.textContent =
-    document.body.classList.contains("dark") ? "☀️" : "🌙";
+// Toggle theme on click safely
+btn?.addEventListener("click", () => {
+  const isDark = document.body.classList.toggle("dark");
+  
+  // Save the preference and swap the icon
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  btn.textContent = isDark ? "☀️" : "🌙"; 
 });
 
-const eventDate = new Date("2026-02-20T18:00:00").getTime();
-const countdownEl = document.getElementById("countdownTimer");
 
-if (countdownEl) {
+// Event countdown
+// const eventDate = new Date("2026-04-20T18:00:00").getTime();
+// const countdownEl = document.getElementById("countdownTimer");
+
+// if (countdownEl) {
+//   setInterval(() => {
+//     const now = new Date().getTime();
+//     const distance = eventDate - now;
+
+//     if (distance < 0) {
+//       countdownEl.textContent = "Event started!";
+//       return;
+//     }
+
+//     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+//     const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+//     const minutes = Math.floor((distance / (1000 * 60)) % 60);
+
+//     countdownEl.textContent = `${days}d ${hours}h ${minutes}m`;
+//   }, 1000);
+// }
+
+// const now = new Date();
+// const eventDate = new Date();
+
+// eventDate.setHours(18, 0, 0, 0); // 6:00 PM today
+
+// // If time has already passed, move to tomorrow
+// if (eventDate.getTime() < now.getTime()) {
+//   eventDate.setDate(eventDate.getDate() + 1);
+// }
+
+// const countdownEl = document.getElementById("countdownTimer");
+// const events = document.querySelectorAll(".calendar-list li");
+
+// let nextEventDate = null;
+
+// if (countdownEl) {
+//   setInterval(() => {
+//     const now = new Date().getTime();
+//     const distance = eventDate.getTime() - now;
+
+//     if (distance < 0) {
+//       countdownEl.textContent = "Event started!";
+//       return;
+//     }
+
+//     const days = Math.floor(distance / (1000 * 60 * 60 *24));
+//     const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+//     const minutes = Math.floor((distance / (1000 * 60)) % 60);
+//     const seconds = Math.floor((distance / 1000) % 60);
+
+//     countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+//   }, 1000);
+// }
+
+// Event countdown
+const countdownEl = document.getElementById("countdownTimer")
+const events = document.querySelectorAll(".calendar-list li")
+
+let nextEventDate = null;
+
+events.forEach(event => {
+  const date = new Date(event.dataset.date).getTime();
+  const now = new Date().getTime();
+
+  if (date > now) {
+    if (!nextEventDate || date < nextEventDate) {
+      nextEventDate = date;
+    }
+  }
+});
+
+if (countdownEl && nextEventDate) {
   setInterval(() => {
+
     const now = new Date().getTime();
-    const distance = eventDate - now;
+    const distance = nextEventDate - now;
 
     if (distance < 0) {
-      countdownEl.textContent = "Event started!";
+      countdownEl.textContent = "Event Started!";
       return;
     }
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
     const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
 
-    countdownEl.textContent = `${days}d ${hours}h ${minutes}m`;
+    countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }, 1000);
 }
-
-// let currentSlide = 0;
-// let testimonialsData = [];
-
-// const track = document.getElementById("testimonialTrack");
-
-// fetch("assets/data/testimonials.json")
-//   .then(res => res.json())
-//   .then(data => {
-//     testimonialsData = data;
-//     renderTestimonials();
-//     autoSlide();
-//   });
-
-// function renderTestimonials() {
-//   track.innerHTML = testimonialsData.map(t => `
-//     <div class="testimonial-card">
-//       <img src="${t.image}" alt="${t.name}">
-//       <div class="testimonial-content">
-//         <p>“${t.message}”</p>
-//         <strong>${t.name}</strong><br>
-//         <small>${t.institution}</small><br>
-//         <small>${t.level}</small>
-//       </div>
-//     </div>
-//   `).join("");
-// }
-
-// function moveSlide(direction) {
-//   currentSlide =
-//     (currentSlide + direction + testimonialsData.length) %
-//     testimonialsData.length;
-
-//   track.style.transform = `translateX(-${currentSlide * 100}%)`;
-// }
-
-// document.querySelector(".prev").onclick = () => moveSlide(-1);
-// document.querySelector(".next").onclick = () => moveSlide(1);
-
-// function autoSlide() {
-//   setInterval(() => moveSlide(1), 6000);
-// }
-
+ 
+//Testimonial slide script
 let currentSlide = 0;
 let testimonialsData = [];
 
@@ -86,12 +128,29 @@ fetch("assets/data/testimonials.json")
     autoSlide();
   });
 
-function renderTestimonials() {
-  track.innerHTML = testimonialsData.map(t => `
+  function renderTestimonials() {
+  if (!track) {
+    console.error("Element #testimonialTrack not found in the DOM.");
+    return;
+  }
+
+  track.innerHTML = testimonialsData.map((t, index) => `
     <div class="testimonial-card">
       <img src="${t.image}" alt="${t.name}">
+
       <div class="testimonial-content">
-        <p>“${t.message}”</p>
+        <p class="testimonial-message" id="msg-${index}">
+          “${t.message}”
+        </p>
+
+        ${
+          t.message.length > 180
+            ? `<button class="read-more-btn" onclick="toggleReadMore(${index})">
+                Read More
+              </button>`
+            : ""
+        }
+
         <strong>${t.name}</strong><br>
         <small>${t.institution}</small><br>
         <small>${t.level}</small>
@@ -101,6 +160,31 @@ function renderTestimonials() {
 
   updateSlide();
 }
+function toggleReadMore(index) {
+  const message = document.getElementById(`msg-${index}`);
+
+  message.classList.toggle("expanded");
+}
+// function renderTestimonials() {
+//   if (!track) {
+//     console.error("Element #testimonialTrack not found in the DOM.");
+//     return;
+//   }
+  
+//   track.innerHTML = testimonialsData.map(t => `
+//     <div class="testimonial-card">
+//       <img src="${t.image}" alt="${t.name}">
+//       <div class="testimonial-content">
+//         <p>“${t.message}”</p>
+//         <strong>${t.name}</strong><br>
+//         <small>${t.institution}</small><br>
+//         <small>${t.level}</small>
+//       </div>
+//     </div>
+//   `).join("");
+
+//   updateSlide();
+// }
 
 function attachControls() {
   prevBtn.addEventListener("click", () => moveSlide(-1));
@@ -114,11 +198,6 @@ function moveSlide(direction) {
 
   updateSlide();
 }
-
-// function attachControls() {
-//   prevBtn.addEventListener("click", () => moveSlide(-1));
-//   nextBtn.addEventListener("click", () => moveSlide(1));
-// }
 
 function updateSlide() {
   track.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -144,23 +223,112 @@ function moveSlide(direction) {
   updateSlide();
   autoSlide();
 }
-// Mail Script
-emailjs.init("UkSAZDqrmMplp5IcO");
 
 const form = document.getElementById("contactForm");
-const status = document.querySelector(".form-status");
 
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
+if (form) {
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
 
-  emailjs.sendForm("service_iippmsj", "template_sdf8mu3", this)
-    .then(() => {
-      status.textContent = "Message sent successfully!";
-      status.style.color = "green";
-      form.reset();
-    })
-    .catch(() => {
-      status.textContent = "Something went wrong. Try again.";
-      status.style.color = "red";
-    });
+    const status = form.querySelector(".form-status");
+
+    emailjs.sendForm("service_iippmsj", "template_sdf8mu3", this)
+      .then(() => {
+        status.textContent = "Message sent successfully!";
+        status.style.color = "green";
+        form.reset();
+      })
+      .catch(() => {
+        status.textContent = "Something went wrong.";
+        status.style.color = "red";
+      });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  let heroSlideIndex = 0;
+
+  const slides = document.querySelectorAll(".slide");
+  const nextBtn = document.querySelector(".simple-next");
+  const prevBtn = document.querySelector(".simple-prev");
+
+  // Stop if slider not on page
+  if (!slides.length || !nextBtn || !prevBtn) return;
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove("active"));
+    slides[index].classList.add("active");
+  }
+
+  nextBtn.addEventListener("click", () => {
+    heroSlideIndex = (heroSlideIndex + 1) % slides.length;
+    showSlide(heroSlideIndex);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    heroSlideIndex =
+      (heroSlideIndex - 1 + slides.length) % slides.length;
+    showSlide(heroSlideIndex);
+  });
+
+  // Auto slide
+  let auto = setInterval(() => {
+    heroSlideIndex = (heroSlideIndex + 1) % slides.length;
+    showSlide(heroSlideIndex);
+  }, 5000);
+
 });
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+}
+
+// Floating contact modal
+const contactFloat = document.getElementById("contactFloat");
+const contactModal = document.getElementById("contactModal");
+const closeModal = document.getElementById("closeModal");
+
+if (contactFloat && contactModal && closeModal) {
+
+  contactFloat.addEventListener("click", () => {
+    contactModal.classList.add("active");
+  });
+
+  closeModal.addEventListener("click", () => {
+    contactModal.classList.remove("active");
+  });
+
+  // Close when clicking outside
+  contactModal.addEventListener("click", (e) => {
+    if (e.target === contactModal) {
+      contactModal.classList.remove("active");
+    }
+  });
+
+}
+
+// Blog Script
+fetch('assets/data/blog.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('blogContainer');
+
+    data.forEach(post => {
+      container.innerHTML += `
+        <div class="blog-card">
+          <img src="${post.image}" alt="">
+          <div class="blog-content">
+            <h3>${post.title}</h3>
+            <p>${post.content}</p>
+            <a href="#">Read More →</a>
+          </div>
+        </div>
+      `;
+    });
+  });
