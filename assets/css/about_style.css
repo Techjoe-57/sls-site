@@ -359,6 +359,61 @@ footer {
 .carousel-btn.prev { left: 10px; }
 .carousel-btn.next { right: 10px; }
 
+/* Individual slide */
+.testimonial-card {
+  min-width: 100%;
+  min-height: 420px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 20px 60px;
+  box-sizing: border-box;
+}
+
+/* Message */
+.testimonial-message {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 700px;
+  margin-bottom: 16px;
+  font-style: italic;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transition: all 0.3s ease;
+}
+
+/* Expanded state */
+.testimonial-message.expanded {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+/* Read More button */
+.read-more-btn {
+  background: transparent;
+  border: none;
+  color: #0f2a44;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 18px;
+  transition: 0.3s ease;
+}
+
+.read-more-btn:hover {
+  opacity: 0.7;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;

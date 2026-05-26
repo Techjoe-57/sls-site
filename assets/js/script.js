@@ -1,12 +1,22 @@
 // Dark mode or light button toggle
-const toggle = document.getElementById("themeToggle");
+// Dark/light mode function
+const btn = document.getElementById("themeToggle");
 
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+// Check the saved theme on load
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  if (btn) btn.textContent = "☀️"; // Optional: Change icon to sun in dark mode
+}
 
-  toggle.textContent =
-    document.body.classList.contains("dark") ? "☀️" : "🌙";
+// Toggle theme on click safely
+btn?.addEventListener("click", () => {
+  const isDark = document.body.classList.toggle("dark");
+  
+  // Save the preference and swap the icon
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  btn.textContent = isDark ? "☀️" : "🌙"; 
 });
+
 
 // Event countdown
 // const eventDate = new Date("2026-04-20T18:00:00").getTime();
@@ -118,17 +128,29 @@ fetch("assets/data/testimonials.json")
     autoSlide();
   });
 
-function renderTestimonials() {
+  function renderTestimonials() {
   if (!track) {
     console.error("Element #testimonialTrack not found in the DOM.");
     return;
   }
-  
-  track.innerHTML = testimonialsData.map(t => `
+
+  track.innerHTML = testimonialsData.map((t, index) => `
     <div class="testimonial-card">
       <img src="${t.image}" alt="${t.name}">
+
       <div class="testimonial-content">
-        <p>“${t.message}”</p>
+        <p class="testimonial-message" id="msg-${index}">
+          “${t.message}”
+        </p>
+
+        ${
+          t.message.length > 180
+            ? `<button class="read-more-btn" onclick="toggleReadMore(${index})">
+                Read More
+              </button>`
+            : ""
+        }
+
         <strong>${t.name}</strong><br>
         <small>${t.institution}</small><br>
         <small>${t.level}</small>
@@ -138,6 +160,31 @@ function renderTestimonials() {
 
   updateSlide();
 }
+function toggleReadMore(index) {
+  const message = document.getElementById(`msg-${index}`);
+
+  message.classList.toggle("expanded");
+}
+// function renderTestimonials() {
+//   if (!track) {
+//     console.error("Element #testimonialTrack not found in the DOM.");
+//     return;
+//   }
+  
+//   track.innerHTML = testimonialsData.map(t => `
+//     <div class="testimonial-card">
+//       <img src="${t.image}" alt="${t.name}">
+//       <div class="testimonial-content">
+//         <p>“${t.message}”</p>
+//         <strong>${t.name}</strong><br>
+//         <small>${t.institution}</small><br>
+//         <small>${t.level}</small>
+//       </div>
+//     </div>
+//   `).join("");
+
+//   updateSlide();
+// }
 
 function attachControls() {
   prevBtn.addEventListener("click", () => moveSlide(-1));
