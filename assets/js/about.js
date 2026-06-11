@@ -1,79 +1,54 @@
-// assets/js/testimonials-preview.js
+// JS for About page
+const track = document.querySelector(".testimonial-tracks");
+const nextBtn = document.querySelector(".next-btn");
+const prevBtn = document.querySelector(".prev-btn");
+
+nextBtn.addEventListener("click", () => {
+  track.scrollBy({ left: 360, behavior: "smooth" });
+});
+
+prevBtn.addEventListener("click", () => {
+  track.scrollBy({ left: -360, behavior: "smooth" });
+});
+
+// testimonials-auto.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  const track = document.getElementById("testimonialTrack");
-  const prevBtn = document.querySelector(".carousel-btn.prev");
-  const nextBtn = document.querySelector(".carousel-btn.next");
+  const track = document.querySelector(".testimonial-tracks");
+  const cards = document.querySelectorAll(".testimonial-cards");
 
   let index = 0;
-  let autoPlayInterval;
+  let intervalId = null;
   let isPaused = false;
 
-  // Get all testimonial cards (after injection)
-  function getCards() {
-    return track.querySelectorAll(".testimonial-card");
-  }
-
   function getCardWidth() {
-    const card = track.querySelector(".testimonial-card");
-    if (!card) return 0;
-
-    const style = window.getComputedStyle(track);
-    const gap = parseInt(style.gap || 0);
-
-    return card.offsetWidth + gap;
+    return cards[0].offsetWidth + 20; // includes gap
   }
 
-  function scrollToIndex(i) {
-    const cards = getCards();
-    if (!cards.length) return;
-
+  function scrollToCard(i) {
     track.scrollTo({
       left: i * getCardWidth(),
       behavior: "smooth",
     });
   }
 
-  function nextSlide() {
-    const cards = getCards();
-    if (!cards.length) return;
-
-    index++;
-    if (index >= cards.length) index = 0;
-
-    scrollToIndex(index);
-  }
-
-  function prevSlide() {
-    const cards = getCards();
-    if (!cards.length) return;
-
-    index--;
-    if (index < 0) index = cards.length - 1;
-
-    scrollToIndex(index);
-  }
-
   function startAutoPlay() {
-    autoPlayInterval = setInterval(() => {
-      if (!isPaused) {
-        nextSlide();
+    intervalId = setInterval(() => {
+      if (isPaused) return;
+
+      index++;
+
+      if (index >= cards.length) {
+        index = 0;
       }
-    }, 4000); // speed
+
+      scrollToCard(index);
+    }, 4000); // change speed here (ms)
   }
 
   function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
+    clearInterval(intervalId);
   }
-
-  // Buttons
-  nextBtn?.addEventListener("click", () => {
-    nextSlide();
-  });
-
-  prevBtn?.addEventListener("click", () => {
-    prevSlide();
-  });
 
   // Pause on hover
   track.addEventListener("mouseenter", () => {
@@ -84,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     isPaused = false;
   });
 
-  // Mobile touch pause
+  // Touch support (mobile pause while interacting)
   track.addEventListener("touchstart", () => {
     isPaused = true;
   });
@@ -93,21 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
     isPaused = false;
   });
 
-  // Keep index synced when user manually scrolls
-  track.addEventListener("scroll", () => {
-    clearTimeout(track._scrollTimer);
-
-    track._scrollTimer = setTimeout(() => {
-      const cards = getCards();
-      if (!cards.length) return;
-
-      index = Math.round(track.scrollLeft / getCardWidth());
-    }, 100);
-  });
-
-  // Start
   startAutoPlay();
+});
 
-  // Optional cleanup (good practice)
-  window.addEventListener("beforeunload", stopAutoPlay);
+track.addEventListener("scroll", () => {
+  clearTimeout(track._scrollTimeout);
+
+  track._scrollTimeout = setTimeout(() => {
+    const indexApprox = Math.round(track.scrollLeft / getCardWidth());
+    index = indexApprox;
+  }, 100);
 });

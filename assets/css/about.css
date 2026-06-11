@@ -1,5 +1,5 @@
 /* ===== BASE ===== */
-.testimonials {
+.testimonialss {
   padding: 60px 20px;
   background: #f9f9f9;
   text-align: center;
@@ -19,7 +19,7 @@
 }
 
 /* ===== TRACK (SCROLL SNAP MAGIC) ===== */
-.testimonial-track {
+.testimonial-tracks {
   display: flex;
   gap: 20px;
   overflow-x: auto;
@@ -31,12 +31,12 @@
 }
 
 /* Hide scrollbar */
-.testimonial-track::-webkit-scrollbar {
+.testimonial-tracks::-webkit-scrollbar {
   display: none;
 }
 
 /* ===== CARD ===== */
-.testimonial-card {
+.testimonial-cards {
   flex: 0 0 100%;
   max-width: 350px;
   background: #fff;
@@ -47,11 +47,11 @@
   transition: transform 0.3s ease;
 }
 
-.testimonial-card:hover {
+.testimonial-cards:hover {
   transform: translateY(-5px);
 }
 
-.testimonial-card img {
+.testimonial-cards img {
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -86,18 +86,48 @@
   background: #000;
 }
 
+/*css for see more button*/
+.stylish-link {
+  color: #ff5733;              /* Match with your brand color */
+  text-decoration: none;       /* Removes default underline */
+  position: relative;
+  font-weight: 600;
+  display: inline-block;       /* Keeps text structure bounded */
+  transition: color 0.3s ease;
+}
+
+/* Creates the hidden underline */
+.stylish-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);        /* Shrunk to zero initially */
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #ff5733;
+  transform-origin: bottom center;
+  transition: transform 0.25s ease-out; /* Smooth slide speed */
+}
+
+/* Expands the line on hover and focus */
+.stylish-link:hover::after,
+.stylish-link:focus::after {
+  transform: scaleX(1);        /* Scales to full width */
+}
+
 /* ===== RESPONSIVE ===== */
 
 /* Tablet */
 @media (min-width: 768px) {
-  .testimonial-card {
+  .testimonial-cards {
     flex: 0 0 45%;
   }
 }
 
 /* Desktop */
 @media (min-width: 1024px) {
-  .testimonial-card {
+  .testimonial-cards {
     flex: 0 0 30%;
   }
 }
