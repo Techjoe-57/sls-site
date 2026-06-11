@@ -1,7 +1,17 @@
+:root {
+  --bg: #f9fafb;
+  --text: #555; 
+
+}
+
+body.dark {
+  --bg: #0f172a;
+  --text: #fff;
+}
 /* Section */
 .blog {
   padding: 60px 20px;
-  background: #f9fafb;
+  background: var(--bg);
   border-radius: 10px;
 }
 
@@ -17,7 +27,7 @@
 }
 
 .blog-header p {
-  color: #666;
+  color: var(--text);
 }
 
 .blog-container {
@@ -29,11 +39,16 @@
 }
 
 .blog-card {
-  background: #fff;
+  background: var(--bg);
   border-radius: 16px;
   overflow: hidden;
 
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  /* box-shadow: 0 8px 20px rgba(0,0,0,0.05); */
+  border: 1px solid #262626;
+  /* Multi-shadow: outer dark shadow + a tiny inner top rim light */
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1); 
 
   display: flex;
   flex-direction: column;
@@ -66,7 +81,7 @@
 
 .blog-content p {
   font-size: 14px;
-  color: #555;
+  color: var(--text);
 
   display: -webkit-box;
   -webkit-line-clamp: 3;

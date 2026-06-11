@@ -1,7 +1,19 @@
+/*MAIN COLORS*/
+:root {
+  --bg: #f9f9f9;
+  --card: #fff;
+  --text: #555;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f8fafc;
+}
 /* ===== BASE ===== */
 .testimonialss {
   padding: 60px 20px;
-  background: #f9f9f9;
+  background: var(--bg);
   text-align: center;
 }
 
@@ -39,7 +51,7 @@
 .testimonial-cards {
   flex: 0 0 100%;
   max-width: 350px;
-  background: #fff;
+  background: var(--card);
   padding: 20px;
   border-radius: 15px;
   scroll-snap-align: center;
@@ -66,7 +78,7 @@
 
 .text {
   font-size: 0.95rem;
-  color: #555;
+  color: var(--text);
 }
 
 /* ===== NAV BUTTONS ===== */
@@ -122,6 +134,10 @@
 @media (min-width: 768px) {
   .testimonial-cards {
     flex: 0 0 45%;
+  }
+  .nav-btn {
+    width: 40px;
+    height: 40px;
   }
 }
 
