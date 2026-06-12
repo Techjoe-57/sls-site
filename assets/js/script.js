@@ -1,166 +1,129 @@
-const toggle = document.getElementById("themeToggle");
+// Dark mode or light button toggle
+// Dark/light mode function
+const btn = document.getElementById("themeToggle");
 
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+// Check the saved theme on load
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  if (btn) btn.textContent = "☀️"; // Optional: Change icon to sun in dark mode
+}
 
-  toggle.textContent =
-    document.body.classList.contains("dark") ? "☀️" : "🌙";
+// Toggle theme on click safely
+btn?.addEventListener("click", () => {
+  const isDark = document.body.classList.toggle("dark");
+  
+  // Save the preference and swap the icon
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  btn.textContent = isDark ? "☀️" : "🌙"; 
 });
 
-const eventDate = new Date("2026-02-20T18:00:00").getTime();
-const countdownEl = document.getElementById("countdownTimer");
+// Event countdown
+const countdownEl = document.getElementById("countdownTimer")
+const events = document.querySelectorAll(".calendar-list li")
 
-if (countdownEl) {
+let nextEventDate = null;
+
+events.forEach(event => {
+  const date = new Date(event.dataset.date).getTime();
+  const now = new Date().getTime();
+
+  if (date > now) {
+    if (!nextEventDate || date < nextEventDate) {
+      nextEventDate = date;
+    }
+  }
+});
+
+if (countdownEl && nextEventDate) {
   setInterval(() => {
+
     const now = new Date().getTime();
-    const distance = eventDate - now;
+    const distance = nextEventDate - now;
 
     if (distance < 0) {
-      countdownEl.textContent = "Event started!";
+      countdownEl.textContent = "Event Started!";
       return;
     }
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
     const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
 
-    countdownEl.textContent = `${days}d ${hours}h ${minutes}m`;
+    countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }, 1000);
 }
 
-// let currentSlide = 0;
-// let testimonialsData = [];
+const form = document.getElementById("contactForm");
 
-// const track = document.getElementById("testimonialTrack");
+if (form) {
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
 
-// fetch("assets/data/testimonials.json")
-//   .then(res => res.json())
-//   .then(data => {
-//     testimonialsData = data;
-//     renderTestimonials();
-//     autoSlide();
-//   });
+    const status = form.querySelector(".form-status");
 
-// function renderTestimonials() {
-//   track.innerHTML = testimonialsData.map(t => `
-//     <div class="testimonial-card">
-//       <img src="${t.image}" alt="${t.name}">
-//       <div class="testimonial-content">
-//         <p>“${t.message}”</p>
-//         <strong>${t.name}</strong><br>
-//         <small>${t.institution}</small><br>
-//         <small>${t.level}</small>
-//       </div>
-//     </div>
-//   `).join("");
-// }
+    emailjs.sendForm("service_iippmsj", "template_sdf8mu3", this)
+      .then(() => {
+        status.textContent = "Message sent successfully!";
+        status.style.color = "green";
+        form.reset();
+      })
+      .catch(() => {
+        status.textContent = "Something went wrong.";
+        status.style.color = "red";
+      });
+  });
+}
 
-// function moveSlide(direction) {
-//   currentSlide =
-//     (currentSlide + direction + testimonialsData.length) %
-//     testimonialsData.length;
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
 
-//   track.style.transform = `translateX(-${currentSlide * 100}%)`;
-// }
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+}
 
-// document.querySelector(".prev").onclick = () => moveSlide(-1);
-// document.querySelector(".next").onclick = () => moveSlide(1);
+// Floating contact modal
+const contactFloat = document.getElementById("contactFloat");
+const contactModal = document.getElementById("contactModal");
+const closeModal = document.getElementById("closeModal");
 
-// function autoSlide() {
-//   setInterval(() => moveSlide(1), 6000);
-// }
+if (contactFloat && contactModal && closeModal) {
 
-let currentSlide = 0;
-let testimonialsData = [];
-
-const track = document.getElementById("testimonialTrack");
-const prevBtn = document.querySelector(".prev");
-const nextBtn = document.querySelector(".next");
-
-fetch("assets/data/testimonials.json")
-  .then(res => res.json())
-  .then(data => {
-    testimonialsData = data;
-    renderTestimonials();
-    attachControls();
-    autoSlide();
+  contactFloat.addEventListener("click", () => {
+    contactModal.classList.add("active");
   });
 
-function renderTestimonials() {
-  track.innerHTML = testimonialsData.map(t => `
-    <div class="testimonial-card">
-      <img src="${t.image}" alt="${t.name}">
-      <div class="testimonial-content">
-        <p>“${t.message}”</p>
-        <strong>${t.name}</strong><br>
-        <small>${t.institution}</small><br>
-        <small>${t.level}</small>
-      </div>
-    </div>
-  `).join("");
+  closeModal.addEventListener("click", () => {
+    contactModal.classList.remove("active");
+  });
 
-  updateSlide();
+  // Close when clicking outside
+  contactModal.addEventListener("click", (e) => {
+    if (e.target === contactModal) {
+      contactModal.classList.remove("active");
+    }
+  });
+
 }
 
-function attachControls() {
-  prevBtn.addEventListener("click", () => moveSlide(-1));
-  nextBtn.addEventListener("click", () => moveSlide(1));
-}
+// Blog Script
+fetch('assets/data/blog.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('blogContainer');
 
-function moveSlide(direction) {
-  currentSlide =
-    (currentSlide + direction + testimonialsData.length) %
-    testimonialsData.length;
-
-  updateSlide();
-}
-
-// function attachControls() {
-//   prevBtn.addEventListener("click", () => moveSlide(-1));
-//   nextBtn.addEventListener("click", () => moveSlide(1));
-// }
-
-function updateSlide() {
-  track.style.transform = `translateX(-${currentSlide * 100}%)`;
-}
-
-function autoSlide() {
-  setInterval(() => moveSlide(1), 6000);
-}
-
-// Reset the timer to prevent auto-slide disrupting manual clicks
-let autoTimer;
-
-function autoSlide() {
-  autoTimer = setInterval(() => moveSlide(1), 6000);
-}
-
-function moveSlide(direction) {
-  clearInterval(autoTimer);
-  currentSlide =
-    (currentSlide + direction + testimonialsData.length) %
-    testimonialsData.length;
-
-  updateSlide();
-  autoSlide();
-}
-// Mail Script
-emailjs.init("UkSAZDqrmMplp5IcO");
-
-const form = document.getElementById("contactForm");
-const status = document.querySelector(".form-status");
-
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  emailjs.sendForm("service_iippmsj", "template_sdf8mu3", this)
-    .then(() => {
-      status.textContent = "Message sent successfully!";
-      status.style.color = "green";
-      form.reset();
-    })
-    .catch(() => {
-      status.textContent = "Something went wrong. Try again.";
-      status.style.color = "red";
+    data.forEach(post => {
+      container.innerHTML += `
+        <div class="blog-card">
+          <img src="${post.image}" alt="">
+          <div class="blog-content">
+            <h3>${post.title}</h3>
+            <p>${post.content}</p>
+            <a href="#">Read More →</a>
+          </div>
+        </div>
+      `;
     });
-});
+  });
